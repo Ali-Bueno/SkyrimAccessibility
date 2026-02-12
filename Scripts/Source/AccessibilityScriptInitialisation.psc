@@ -3,11 +3,13 @@ Scriptname AccessibilityScriptInitialisation extends ObjectReference
 ;ToDo Cast AccessibilityClairvoyance on its own hotkey, to save slot for other spells.
 
 Spell Property AccessibilityClairvoyance Auto
+Quest Property AccessibilityQuestInitialisation Auto
 
 Event OnInit()
     RegisterForSingleUpdate(3.0)
     Game.ForceFirstPerson()
     AccessibilityClairvoyance = Game.GetFormFromFile(0x06023F0E, "accessibility.esp") As Spell
+    AccessibilityQuestInitialisation = Game.GetFormFromFile(0x060B6C32, "accessibility.esp") As Quest
     Game.GetPlayer().EquipSpell(AccessibilityClairvoyance, 2)
     Utility.Wait(3.0)
     If (AccessibilityQuestInitialisation.IsCompleted())
