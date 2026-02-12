@@ -10,7 +10,9 @@ Event OnInit()
     AccessibilityClairvoyance = Game.GetFormFromFile(0x06023F0E, "accessibility.esp") As Spell
     Game.GetPlayer().EquipSpell(AccessibilityClairvoyance, 2)
     Utility.Wait(3.0)
-    Game.GetPlayer().SetPosition(15584.351563, -81423.515625, 8203.262695)
+    If (AccessibilityQuestInitialisation.IsCompleted())
+        Game.GetPlayer().SetPosition(15584.351563, -81423.515625, 8203.262695)
+    EndIf
 EndEvent
 
 
