@@ -11,17 +11,18 @@ Event OnInit()
     AccessibilityClairvoyance = Game.GetFormFromFile(0x06023F0E, "accessibility.esp") As Spell
     AccessibilityQuestInitialisation = Game.GetFormFromFile(0x060B6C32, "accessibility.esp") As Quest
     Game.GetPlayer().EquipSpell(AccessibilityClairvoyance, 2)
-    Utility.Wait(3.0)
-    If (AccessibilityQuestInitialisation.IsCompleted())
-        Game.GetPlayer().SetPosition(15584.351563, -81423.515625, 8203.262695)
-    EndIf
 EndEvent
 
 
 Event OnUpdate()
-    Debug.Notification("Beta Test: Accessibility Mod Mk3 By Dio Kyrie Loaded")
+    ;/Debug.Notification("Beta Test: Accessibility Mod Mk3 By Dio Kyrie Loaded")
     Debug.Notification("Current x position: " + Game.GetPlayer().GetPositionX())
     Debug.Notification("Current y position: " + Game.GetPlayer().GetPositionY())
-    Debug.Notification("Current z position: " + Game.GetPlayer().GetPositionZ())
+    Debug.Notification("Current z position: " + Game.GetPlayer().GetPositionZ())/;
     RegisterForSingleUpdate(3.0)
+    If (AccessibilityQuestInitialisation.IsCompleted())
+        Utility.Wait(3.0)
+        Game.GetPlayer().SetPosition(15584.351563, -81423.515625, 8203.262695)
+        UnregisterForUpdate()
+    EndIf
 EndEvent
