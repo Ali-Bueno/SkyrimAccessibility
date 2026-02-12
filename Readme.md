@@ -1,4 +1,4 @@
-# The Skyrim Accessibility Mod
+# The Skyrim Accessibility Mod By Dio Kyrie
 ## Install Guide
 1. Install Skyrim AE;
 2. Install ModOrganizer2;
@@ -15,10 +15,10 @@
 6. Launch SKSE from within MO2.
 
 ## Available Features
-- Intro Auto Walkthrough;
+- Intro Auto Walkthrough; [In Nearest Plans]
 - Clairvoyance with Audio Path, Awailable on Z Key;
 - Reworked Lockpicking System based on Skill Level, Hotkey G Key;
-- Audio Markers on Items, NPC, Containers, Doors, etc.
+- Audio Markers on Items, NPC, Containers, Doors, etc.[Not Yet Complete]
 
 ## What is not Included
 - TTS is not proposed by this Mod
