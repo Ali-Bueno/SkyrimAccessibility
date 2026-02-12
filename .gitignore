@@ -1,0 +1,16 @@
+# As this gitignore will be in a game folder and is used to track mod,
+# we will use reverse gitignore and state what to include.
+# Ignore everything
+*
+# Whitelist Files and Folders to Source Control
+# Game Mod Related
+!accessibility.esp
+!Sound/FX/Accessibility/*
+!Scripts/Accessibility*
+!Scripts/Source/Accessibility*
+# Git Related
+!.gitignore
+!Readme.md
+!License.md
+!Attribution.md
+!Contributing.md
