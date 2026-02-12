@@ -3,13 +3,13 @@ Scriptname AccessibilityScriptInitialisation extends ObjectReference
 ;ToDo Cast AccessibilityClairvoyance on its own hotkey, to save slot for other spells.
 
 Spell Property AccessibilityClairvoyance Auto
-Quest Property AccessibilityQuestInitialisation Auto
+Quest Property AccessibilityMQ101 Auto
 
 Event OnInit()
     RegisterForSingleUpdate(3.0)
     Game.ForceFirstPerson()
     AccessibilityClairvoyance = Game.GetFormFromFile(0x06023F0E, "accessibility.esp") As Spell
-    AccessibilityQuestInitialisation = Game.GetFormFromFile(0x060B6C32, "accessibility.esp") As Quest
+    AccessibilityMQ101 = Game.GetFormFromFile(0x0003372B, "Skyrim.esm") As Quest
     Game.GetPlayer().EquipSpell(AccessibilityClairvoyance, 2)
 EndEvent
 
@@ -20,9 +20,7 @@ Event OnUpdate()
     Debug.Notification("Current y position: " + Game.GetPlayer().GetPositionY())
     Debug.Notification("Current z position: " + Game.GetPlayer().GetPositionZ())/;
     RegisterForSingleUpdate(3.0)
-    If (AccessibilityQuestInitialisation.IsCompleted())
-        Utility.Wait(3.0)
-        Game.GetPlayer().SetPosition(15584.351563, -81423.515625, 8203.262695)
-        UnregisterForUpdate()
+    If AccessibilityMQ101.GetCurrentStageID() == 160
+        Debug.Notification("160")
     EndIf
 EndEvent
