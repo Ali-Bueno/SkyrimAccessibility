@@ -15,7 +15,7 @@ Event OnInit()
 EndEvent
 
 Event OnKeyDown(Int KeyCode)
-    If KeyCode == 49 && !Utility.IsInMenuMode()
+    If KeyCode == 49
 		Debug.Notification("Beta Test: Accessibility Mod Mk3 By Dio Kyrie Loaded")
         Debug.Notification("Current x position: " + Game.GetPlayer().GetPositionX())
         Debug.Notification("Current y position: " + Game.GetPlayer().GetPositionY())
