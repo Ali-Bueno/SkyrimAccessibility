@@ -5,9 +5,9 @@
 # Whitelist Files and Folders to Source Control
 # Game Mod Related
 !accessibility.esp
-!Sound/FX/Accessibility/*
-!Scripts/Accessibility*
-!Scripts/Source/Accessibility*
+!*/Sound/FX/Accessibility/*
+!*/Scripts/Accessibility*
+!*/Scripts/Source/Accessibility*
 # Git Related
 !.gitignore
 !Readme.md
