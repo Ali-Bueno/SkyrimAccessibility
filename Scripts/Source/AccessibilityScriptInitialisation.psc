@@ -6,7 +6,10 @@ Spell Property AccessibilityClairvoyance Auto
 Quest Property AccessibilityMQ101 Auto
 
 Event OnInit()
-    RegisterForSingleUpdate(3.0)
+    If AccessibilityMQ101.GetCurrentStageID() <= 150
+        Debug.Notification("<150")
+        RegisterForSingleUpdate(3.0)
+    EndIf
     Game.ForceFirstPerson()
     AccessibilityClairvoyance = Game.GetFormFromFile(0x06023F0E, "accessibility.esp") As Spell
     AccessibilityMQ101 = Game.GetFormFromFile(0x0003372B, "Skyrim.esm") As Quest
@@ -19,8 +22,11 @@ Event OnUpdate()
     Debug.Notification("Current x position: " + Game.GetPlayer().GetPositionX())
     Debug.Notification("Current y position: " + Game.GetPlayer().GetPositionY())
     Debug.Notification("Current z position: " + Game.GetPlayer().GetPositionZ())/;
-    RegisterForSingleUpdate(3.0)
-    If AccessibilityMQ101.GetCurrentStageID() == 160
+    If AccessibilityMQ101.GetCurrentStageID() >= 160
         Debug.Notification("160")
+        UnregisterForUpdate()
+    Else
+        Debug.Notification("!IsNot160")
+        RegisterForSingleUpdate(3.0)
     EndIf
 EndEvent
