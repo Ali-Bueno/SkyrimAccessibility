@@ -28,6 +28,8 @@ Event OnUpdate()
     If AccessibilityMQ101.IsObjectiveDisplayed(30)
         Debug.Notification("Objective is 30")
         UnregisterForUpdate()
+        Utility().Wait(5.0)
+        Game.GetPlayer().SetPosition(14768.87, -83012.77, 8297.52)
     Else
         RegisterForSingleUpdate(3.0)
     EndIf
