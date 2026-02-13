@@ -4,11 +4,13 @@ Scriptname AccessibilityScriptInitialisation extends ObjectReference
 
 Spell Property AccessibilityClairvoyance Auto
 Quest Property AccessibilityMQ101 Auto
+Static Property AccessibilityXMarkerHeading Auto
 
 Event OnInit()
     RegisterForSingleUpdate(3.0)
     Game.ForceFirstPerson()
     AccessibilityClairvoyance = Game.GetFormFromFile(0x06023F0E, "accessibility.esp") As Spell
+    AccessibilityXMarkerHeading = Game.GetFormFromFile(0x060C0E33, "accessibility.esp") As Static
     AccessibilityMQ101 = Game.GetFormFromFile(0x0003372B, "Skyrim.esm") As Quest
     Game.GetPlayer().EquipSpell(AccessibilityClairvoyance, 2)
     RegisterForKey(49)
@@ -27,9 +29,12 @@ EndEvent
 Event OnUpdate()
     If AccessibilityMQ101.IsObjectiveDisplayed(30)
         Debug.Notification("Objective is 30")
+        Utility.Wait(1.0)
+        ObjectReference AccessibilityReferenceXMarkerHeading = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeading)
+        AccessibilityReferenceXMarkerHeading.SetPosition(14768.87, -83012.77, 8297.52)
+        Utility.Wait(1.0)
+        Game.GetPlayer().MoveTo(AccessibilityReferenceXMarkerHeading)
         UnregisterForUpdate()
-        Utility().Wait(5.0)
-        Game.GetPlayer().SetPosition(14768.87, -83012.77, 8297.52)
     Else
         RegisterForSingleUpdate(3.0)
     EndIf
