@@ -1,19 +1,21 @@
 Scriptname AccessibilityScriptNotifierWalkInPlace extends ReferenceAlias
 
-Static Property AccessibilityXMarkerHeading_WalkInPlace Auto
+Static Property AccessibilityXMarkerHeadingWalkInPlace Auto
+ObjectReference Property FormerPosition Auto
 
 Event OnInit()
-    AccessibilityXMarkerHeading_WalkInPlace = Game.GetFormFromFile(0x060C0E33, "accessibility.esp") As Static
-    ;RegisterForSingleUpdate(3.0)
+    RegisterForSingleUpdate(3.0)
+    AccessibilityXMarkerHeadingWalkInPlace = Game.GetFormFromFile(0x060C0E33, "accessibility.esp") As Static
+    FormerPosition = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeadingWalkInPlace) As ObjectReference
 EndEvent
-
 Event OnUpdate()
     Int ForwardKey = Input.GetMappedKey("Forward")
     Int BackwardKey = Input.GetMappedKey("Back")
     Int LeftwardKey = Input.GetMappedKey("Strafe Left")
     Int RightwardKey = Input.GetMappedKey("Strafe Right")
-    ObjectReference FormerPosition = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeading_WalkInPlace)
+    FormerPosition.MoveTo(Game.GetPlayer())
     If Input.IsKeyPressed(ForwardKey) || Input.IsKeyPressed(BackwardKey) || Input.IsKeyPressed(LeftwardKey) || Input.IsKeyPressed(RightwardKey)
+        Utility.Wait(3.0)
         If FormerPosition.GetDistance(Game.GetPlayer()) < 100
             Debug.Notification("You are walking in Place!")
         EndIf

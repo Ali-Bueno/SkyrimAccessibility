@@ -1,19 +1,21 @@
 Scriptname AccessibilityScriptQuestsMQ101 extends ReferenceAlias
 
 Quest Property AccessibilityQuestMQ101 Auto
-Static Property AccessibilityXMarkerHeading Auto
+Static Property AccessibilityXMarkerHeadingMQ101 Auto
+ObjectReference Property AccessibilityReferenceXMarkerHeading Auto
 
 Event OnInit()
-    AccessibilityXMarkerHeading = Game.GetFormFromFile(0x060C0E33, "accessibility.esp") As Static
-    AccessibilityQuestMQ101 = Game.GetFormFromFile(0x0003372B, "Skyrim.esm") As Quest
     RegisterForSingleUpdate(1.0)
+    AccessibilityXMarkerHeadingMQ101 = Game.GetFormFromFile(0x060C0E33, "accessibility.esp") As Static
+    AccessibilityQuestMQ101 = Game.GetFormFromFile(0x0003372B, "Skyrim.esm") As Quest
+    AccessibilityReferenceXMarkerHeading = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeadingMQ101) As ObjectReference
 EndEvent
 
 Event OnUpdate()
     If AccessibilityQuestMQ101.IsObjectiveDisplayed(30)
         Debug.Notification("Accessibility Quest MQ101 Objective 30")
         Utility.Wait(1.0)
-        ObjectReference AccessibilityReferenceXMarkerHeading = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeading)
+        AccessibilityReferenceXMarkerHeading.MoveTo(Game.GetPlayer())
         Utility.Wait(3.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(15018.0, -82548.0, 8247.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
@@ -50,6 +52,7 @@ Event OnUpdate()
         Utility.Wait(5.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(15927.0, -79342.0, 8188.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
+        UnregisterForUpdate()
     Else
         RegisterForSingleUpdate(5.0)
     EndIf
