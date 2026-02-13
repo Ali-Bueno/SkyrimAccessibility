@@ -17,11 +17,9 @@ EndEvent
 ;/
 Event OnKeyDown(Int KeyCode)
     If KeyCode == 33 && !Utility.IsInMenuMode()
-		Game.ForceFirstPerson()
+        UnregisterForControl("Toggle POV")
         Utility.Wait(0.1)
-        Game.ForceFirstPerson()
         Menu()
-        Game.ForceFirstPerson()
 	EndIf
 EndEvent
 /;
