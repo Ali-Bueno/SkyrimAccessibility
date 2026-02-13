@@ -43,49 +43,24 @@ Event OnUpdate()
         Utility.Wait(18.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(14786.0, -83521.0, 8894.0)
         Game.GetPlayer().MoveTo(AccessibilityReferenceXMarkerHeading)
+        Utility.Wait(23.0)
+        AccessibilityReferenceXMarkerHeading.SetPosition(15831.0, -83710.0, 8712.0)
+        Game.GetPlayer().MoveTo(AccessibilityReferenceXMarkerHeading)
+        Utility.Wait(3.0)
+        AccessibilityReferenceXMarkerHeading.SetPosition(17363.0, -82853.0, 8378.0)
+        Game.GetPlayer().MoveTo(AccessibilityReferenceXMarkerHeading)
+        Utility.Wait(20.0)
+        AccessibilityReferenceXMarkerHeading.SetPosition(17927.0, -79966.0, 8251.0)
+        Game.GetPlayer().MoveTo(AccessibilityReferenceXMarkerHeading)
         Utility.Wait(5.0)
-
+        AccessibilityReferenceXMarkerHeading.SetPosition(19482.0, -79063.0, 8448.0)
+        Game.GetPlayer().MoveTo(AccessibilityReferenceXMarkerHeading)
+        Utility.Wait(5.0)
+        AccessibilityReferenceXMarkerHeading.SetPosition(15927.0, -79342.0, 8188.0)
+        Game.GetPlayer().MoveTo(AccessibilityReferenceXMarkerHeading)
 
         UnregisterForUpdate()
     Else
         RegisterForSingleUpdate(3.0)
     EndIf
 EndEvent
-
-;/
-Pos0 5 Sec
-Pos1 15 Sec
-x14768.87
-y-83012.77
-z8297.52
-
-Pos2 5 Sec
-x15092.56
-y-83016.23
-z9065.50
-
-Pos3 3 Sec
-x15607.18
-y-83660.95
-z8712.43
-
-Pos4 20 Sec
-x17363.14
-y-82853.16
-z8378.24
-
-Pos5 5 Sec
-x17927.80
-y-79966.93
-z8251.88
-
-Pos6 5 Sec
-x19482.38
-y-79063.49
-z8448.38
-
-Pos7
-x15927.17
-y-79342.80
-z8188.85
-/;
