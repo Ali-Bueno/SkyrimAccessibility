@@ -7,6 +7,7 @@ Quest Property AccessibilityMQ101 Auto
 Static Property AccessibilityXMarkerHeading Auto
 
 Event OnInit()
+    Debug.Notification("Beta Test: Accessibility Mod Mk3 By Dio Kyrie Loaded")
     RegisterForSingleUpdate(3.0)
     Game.ForceFirstPerson()
     AccessibilityClairvoyance = Game.GetFormFromFile(0x06023F0E, "accessibility.esp") As Spell
@@ -18,11 +19,10 @@ EndEvent
 
 Event OnKeyDown(Int KeyCode)
     If KeyCode == 49
-		Debug.Notification("Beta Test: Accessibility Mod Mk3 By Dio Kyrie Loaded")
         Debug.Notification("Current x position: " + Game.GetPlayer().GetPositionX())
         Debug.Notification("Current y position: " + Game.GetPlayer().GetPositionY())
         Debug.Notification("Current z position: " + Game.GetPlayer().GetPositionZ())
-        Utility.Wait(1.0)
+        Utility.Wait(3.0)
         Int ScreenshotKey = Input.GetMappedKey("Screenshot")
         Input.TapKey(ScreenshotKey)
 	EndIf
@@ -34,9 +34,18 @@ Event OnUpdate()
         Debug.Notification("Objective is 30")
         Utility.Wait(1.0)
         ObjectReference AccessibilityReferenceXMarkerHeading = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeading)
-        AccessibilityReferenceXMarkerHeading.SetPosition(14768.87, -83012.77, 8297.52)
-        Utility.Wait(1.0)
+        Utility.Wait(3.0)
+        AccessibilityReferenceXMarkerHeading.SetPosition(15018.0, -82548.0, 8247.0)
         Game.GetPlayer().MoveTo(AccessibilityReferenceXMarkerHeading)
+        Utility.Wait(3.0)
+        AccessibilityReferenceXMarkerHeading.SetPosition(14768.0, -83012.0, 8297.0)
+        Game.GetPlayer().MoveTo(AccessibilityReferenceXMarkerHeading)
+        Utility.Wait(18.0)
+        AccessibilityReferenceXMarkerHeading.SetPosition(14786.0, -83521.0, 8894.0)
+        Game.GetPlayer().MoveTo(AccessibilityReferenceXMarkerHeading)
+        Utility.Wait(5.0)
+
+
         UnregisterForUpdate()
     Else
         RegisterForSingleUpdate(3.0)
