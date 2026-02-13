@@ -1,7 +1,5 @@
 Scriptname AccessibilityScriptQuestsMQ101 extends ReferenceAlias
 
-;ToDo Add one more Postition to trigger Ralof to appear.
-
 Quest Property AccessibilityQuestMQ101 Auto
 Static Property AccessibilityXMarkerHeading Auto
 
@@ -31,16 +29,19 @@ Event OnUpdate()
         Utility.Wait(16.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(15025.0, -83126.0, 9071.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
-        Utility.Wait(5.0)
+        Utility.Wait(8.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(15831.0, -83710.0, 8712.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
-        Utility.Wait(3.0)
+        Utility.Wait(5.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(17363.0, -82853.0, 8378.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
         Utility.Wait(29.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(17927.0, -79966.0, 8251.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
         Utility.Wait(25.0)
+        AccessibilityReferenceXMarkerHeading.SetPosition(18580.0, -79945.0, 8415.0)
+        Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
+        Utility.Wait(5.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(19482.0, -79063.0, 8448.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
         Utility.Wait(10.0)
