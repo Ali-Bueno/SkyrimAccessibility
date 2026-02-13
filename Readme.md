@@ -12,14 +12,15 @@
 >- [Media Keys Fix](https://www.nexusmods.com/skyrimspecialedition/mods/92948?tab=files);
 >- [Better MessageBox Controls](https://www.nexusmods.com/skyrimspecialedition/mods/1428?tab=files).
 
-5. Install The Skyrim Accessibility Mod with MO2;
+5. Install [The Skyrim Accessibility Mod](https://codeberg.org/DioKyrie/TheSkyrimAccessibilityMod/archive/main.zip) with MO2;
 6. Launch SKSE from within MO2.
 
 ## Available Features
-- Intro Auto Walkthrough; [In Nearest Plans]
-- Clairvoyance with Audio Path, Awailable on Z Key;
+- Intro Auto Walkthrough;
+- Clairvoyance with Audio Path, Awailable on Z Key after Intro;
 - Reworked Lockpicking System based on Skill Level, Hotkey G Key;
 - Audio Markers on Items, NPC, Containers, Doors, etc.[Not Yet Complete]
+- Debug Key is B. Shows Coordiantes and makes Screenshot.
 
 ## What is not Included
 - TTS is not proposed by this Mod
