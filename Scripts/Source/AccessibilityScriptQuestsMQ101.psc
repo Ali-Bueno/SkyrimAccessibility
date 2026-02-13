@@ -1,5 +1,7 @@
 Scriptname AccessibilityScriptQuestsMQ101 extends ReferenceAlias
 
+;ToDo Add one more Postition to trigger Ralof to appear.
+
 Quest Property AccessibilityQuestMQ101 Auto
 Static Property AccessibilityXMarkerHeading Auto
 
@@ -11,7 +13,7 @@ EndEvent
 
 Event OnUpdate()
     If AccessibilityQuestMQ101.IsObjectiveDisplayed(30)
-        Debug.Notification("Objective is 30")
+        Debug.Notification("Accessibility Quest MQ101 Objective 30")
         Utility.Wait(1.0)
         ObjectReference AccessibilityReferenceXMarkerHeading = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeading)
         Utility.Wait(3.0)
@@ -26,7 +28,7 @@ Event OnUpdate()
         Utility.Wait(3.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(14786.0, -83521.0, 8894.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
-        Utility.Wait(18.0)
+        Utility.Wait(16.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(15025.0, -83126.0, 9071.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
         Utility.Wait(5.0)
@@ -38,10 +40,10 @@ Event OnUpdate()
         Utility.Wait(29.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(17927.0, -79966.0, 8251.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
-        Utility.Wait(20.0)
+        Utility.Wait(25.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(19482.0, -79063.0, 8448.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
-        Utility.Wait(15.0)
+        Utility.Wait(10.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(18908.0, -78033.0, 8453.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
         Utility.Wait(5.0)
