@@ -19,6 +19,7 @@
 - Intro Auto Walkthrough;
 - Clairvoyance with Audio Path, Awailable on Z Key after Intro;
 - Reworked Lockpicking System based on Skill Level, Hotkey G Key;
+- Sound Notify if walking in Place.
 - Audio Markers on Items, NPC, Containers, Doors, etc.[Not Yet Complete]
 - Debug Key is B. Shows Coordiantes and makes Screenshot.
 

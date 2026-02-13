@@ -11,7 +11,6 @@ Event OnInit()
     AccessibilityClairvoyance = Game.GetFormFromFile(0x06023F0E, "accessibility.esp") As Spell
     Game.GetPlayer().EquipSpell(AccessibilityClairvoyance, 2)
     RegisterForKey(48)
-
 EndEvent
 
 Event OnKeyDown(Int KeyCode)
