@@ -1,4 +1,4 @@
-Scriptname AccessibilityScriptInitialisation extends ObjectReference
+Scriptname AccessibilityScriptInitialisation extends ReferenceAlias
 
 ;ToDo Cast AccessibilityClairvoyance on its own hotkey, to save slot for other spells.
 
