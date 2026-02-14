@@ -1,11 +1,11 @@
 Scriptname AccessibilityScriptHKDebug extends ReferenceAlias
 
 Event OnInit()
-    RegisterForKey(48) ;B Key
+    RegisterForKey(38) ;L Key
 EndEvent
 
 Event OnKeyDown(Int KeyCode)
-    If KeyCode == 48
+    If KeyCode == 38
         Debug.Notification("Current x position: " + Game.GetPlayer().GetPositionX())
         Debug.Notification("Current y position: " + Game.GetPlayer().GetPositionY())
         Debug.Notification("Current z position: " + Game.GetPlayer().GetPositionZ())

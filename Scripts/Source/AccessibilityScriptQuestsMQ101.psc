@@ -49,6 +49,8 @@ Event OnUpdate()
         Utility.Wait(5.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(15927.0, -79342.0, 8188.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
+
+        
         UnregisterForUpdate()
     Else
         RegisterForSingleUpdate(5.0)

@@ -36,6 +36,8 @@ Event OnInit()
 EndEvent
 
 Event OnUpdate()
+
+;=============================Potions & Poisons=============================
     ObjectReference[] PotionArray = PO3_SKSEFunctions.FindAllReferencesWithKeyword(Game.GetPlayer(), VendorItemPotion, 3000.0, false)
     Int PotionIndex = 0
     While PotionIndex < PotionArray.Length
