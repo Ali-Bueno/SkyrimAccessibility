@@ -1,6 +1,5 @@
 Scriptname AccessibilityScriptQuestsMQ101 extends ReferenceAlias
 
-Quest Property AccessibilityQuests Auto
 Quest Property AccessibilityQuestMQ101 Auto
 Static Property AccessibilityXMarkerHeadingMQ101 Auto
 ObjectReference Property AccessibilityReferenceXMarkerHeading Auto
@@ -50,12 +49,6 @@ Event OnUpdate()
         Utility.Wait(5.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(15927.0, -79342.0, 8188.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
-        UnregisterForUpdate()
-    ElseIf AccessibilityQuestMQ101.IsObjectiveDisplayed(60)
-        AccessibilityQuests.SetCurrentStageID(1)
-        UnregisterForUpdate()
-    ElseIf (AccessibilityQuestMQ101.IsObjectiveCompleted(60) || AccessibilityQuestMQ101.IsObjectiveFailed(60))
-        AccessibilityQuests.SetCurrentStageID(2)
         UnregisterForUpdate()
     Else
         RegisterForSingleUpdate(5.0)
