@@ -6,12 +6,13 @@ Message Property AccessibilityMSGMQ101StartSelectMenu Auto
 ObjectReference Property AccessibilityReferenceXMarkerHeading Auto
 
 Event OnInit()
+    Utility.Wait(2.0)
     RegisterForSingleUpdate(1.0)
-    AccessibilityReferenceXMarkerHeading = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeadingMQ101) As ObjectReference
 EndEvent
 
 Event OnUpdate()
     If AccessibilityQuestMQ101.IsObjectiveDisplayed(30)
+        AccessibilityReferenceXMarkerHeading = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeadingMQ101) As ObjectReference
         Utility.Wait(1.0)
         AccessibilityReferenceXMarkerHeading.MoveTo(Game.GetPlayer())
         Utility.Wait(3.0)
