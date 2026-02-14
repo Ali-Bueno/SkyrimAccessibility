@@ -7,6 +7,7 @@ Sound Property AccessibilityAMBItemPotion Auto
 Sound Property AccessibilityAMBItemSword Auto
 
 Keyword Property VendorItemPotion Auto
+Keyword Property VendorItemPoison Auto
 Keyword Property WeapTypeDagger Auto
 Keyword Property WeapTypeSword Auto
 Keyword Property WeapTypeGreatSword Auto
@@ -21,7 +22,7 @@ Event OnInit()
     Debug.Notification("Accessibility Ambiance Item Loaded")
     RegisterForSingleUpdate(5.0)
     AccessibilityAMBItemPotion = Game.GetFormFromFile(0x0609862C, "accessibility.esp") As Sound
-    AccessibilityAMBItemSword = Game.GetFormFromFile(0x0605181F, "accessibility.esp") As Sound
+    AccessibilityAMBItemSword = Game.GetFormFromFile(0x060DA337, "accessibility.esp") As Sound
     VendorItemPotion = Game.GetFormFromFile(0x0008CDEC, "Skyrim.esm") As Keyword
     WeapTypeDagger = Game.GetFormFromFile(0x0001E713, "Skyrim.esm") As Keyword
     WeapTypeSword = Game.GetFormFromFile(0x0001E711, "Skyrim.esm") As Keyword
