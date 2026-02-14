@@ -8,7 +8,7 @@ Event OnInit()
     RegisterForSingleUpdate(3.0)
     AccessibilityXMarkerHeadingWalkInPlace = Game.GetFormFromFile(0x060C0E33, "accessibility.esp") As Static
     FormerPosition = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeadingWalkInPlace) As ObjectReference
-    AccessibilityCNDWalkInPlace = Game.GetFormFromFile(0x060DA335, "accessibility.esp") As Sound
+    AccessibilityCNDWalkInPlace = Game.GetFormFromFile(0x060DA336, "accessibility.esp") As Sound
 EndEvent
 Event OnUpdate()
     Int ForwardKey = Input.GetMappedKey("Forward")
