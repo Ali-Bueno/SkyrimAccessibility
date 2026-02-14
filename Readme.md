@@ -17,11 +17,23 @@
 
 ## Available Features
 - Intro Auto Walkthrough;
-- Clairvoyance with Audio Path, Awailable on Z Key after Intro;
 - Reworked Lockpicking System based on Skill Level, Hotkey G Key;
 - Sound Notify if walking in Place.
 - Audio Markers on Items, NPC, Containers, Doors, etc.[Not Yet Complete]
 - Debug Key is B. Shows Coordiantes and makes Screenshot.
+
+## Hotkeys
+- F Key -
+- X Key - Clairvoyance. A Guiding spell which will lead you to current quest marker via sound trail.
+- C Key -
+- V Key -
+- G Key -
+- H Key -
+- U Key -
+- O Key -
+- B Key -
+- K Key -
+- L Key -
 
 ## What is not Included
 - TTS is not proposed by this Mod

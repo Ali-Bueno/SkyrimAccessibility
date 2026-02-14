@@ -1,19 +1,17 @@
 Scriptname AccessibilityScriptQuestsMQ101 extends ReferenceAlias
 
+Quest Property AccessibilityQuests Auto
 Quest Property AccessibilityQuestMQ101 Auto
 Static Property AccessibilityXMarkerHeadingMQ101 Auto
 ObjectReference Property AccessibilityReferenceXMarkerHeading Auto
 
 Event OnInit()
     RegisterForSingleUpdate(1.0)
-    AccessibilityXMarkerHeadingMQ101 = Game.GetFormFromFile(0x060C0E33, "accessibility.esp") As Static
-    AccessibilityQuestMQ101 = Game.GetFormFromFile(0x0003372B, "Skyrim.esm") As Quest
     AccessibilityReferenceXMarkerHeading = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeadingMQ101) As ObjectReference
 EndEvent
 
 Event OnUpdate()
     If AccessibilityQuestMQ101.IsObjectiveDisplayed(30)
-        Debug.Notification("Accessibility Quest MQ101 Objective 30")
         Utility.Wait(1.0)
         AccessibilityReferenceXMarkerHeading.MoveTo(Game.GetPlayer())
         Utility.Wait(3.0)
@@ -37,10 +35,10 @@ Event OnUpdate()
         Utility.Wait(5.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(17363.0, -82853.0, 8378.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
-        Utility.Wait(29.0)
+        Utility.Wait(30.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(17927.0, -79966.0, 8251.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
-        Utility.Wait(25.0)
+        Utility.Wait(20.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(18580.0, -79945.0, 8415.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
         Utility.Wait(5.0)
@@ -52,6 +50,12 @@ Event OnUpdate()
         Utility.Wait(5.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(15927.0, -79342.0, 8188.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
+        UnregisterForUpdate()
+    ElseIf AccessibilityQuestMQ101.IsObjectiveDisplayed(60)
+        AccessibilityQuests.SetCurrentStageID(1)
+        UnregisterForUpdate()
+    ElseIf (AccessibilityQuestMQ101.IsObjectiveCompleted(60) || AccessibilityQuestMQ101.IsObjectiveFailed(60))
+        AccessibilityQuests.SetCurrentStageID(2)
         UnregisterForUpdate()
     Else
         RegisterForSingleUpdate(5.0)
