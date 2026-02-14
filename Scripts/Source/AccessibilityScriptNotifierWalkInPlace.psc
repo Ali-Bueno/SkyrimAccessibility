@@ -17,7 +17,7 @@ Event OnUpdate()
     FormerPosition.MoveTo(Game.GetPlayer())
     If Input.IsKeyPressed(ForwardKey) || Input.IsKeyPressed(BackwardKey) || Input.IsKeyPressed(LeftwardKey) || Input.IsKeyPressed(RightwardKey)
         Utility.Wait(3.0)
-        If FormerPosition.GetDistance(Game.GetPlayer()) < 100
+        If FormerPosition.GetDistance(Game.GetPlayer()) < 50
             Debug.Notification("You are walking in Place!")
             AccessibilityCNDWalkInPlace.Play(Game.GetPlayer())
         EndIf

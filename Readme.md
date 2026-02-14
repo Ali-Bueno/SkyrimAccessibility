@@ -22,10 +22,10 @@
 - Audio Markers on Items, NPC, Containers, Doors, etc.[Work In Progress]
 
 ## Hotkeys
-- F Key -
-- X Key - 
-- C Key -
-- V Key -
+- F Key - Interact Menu.[Work In Progress]
+- X Key - Lock Camera On Target. List of targets to lock camera on.[Work In Progress]
+- C Key - Autowalk. Selet Neraby Target, Interest Target or City.[Work In Progress]
+- V Key - Character Status. Health, Mana, Stamina, Debuffs.[Work In Progress]
 - G Key - LockPicking. Try to pick any Lock in Radius of 3 Reters.
 - H Key -
 - U Key -

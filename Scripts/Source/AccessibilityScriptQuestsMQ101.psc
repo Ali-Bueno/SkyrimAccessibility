@@ -65,10 +65,10 @@ Function AccessibilityMQ101StartSelect(Bool abMenu = True, Int aiButton = 0)
                 Utility.Wait(5.0)
                 AccessibilityReferenceXMarkerHeading.SetPosition(15927.0, -79342.0, 8188.0)
                 Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
-                Utility.Wait(5.0)
+                Utility.Wait(10.0)
                 AccessibilityMQ101HadvarRalofSelect()
             ElseIf aiButton == 1
-
+                ;Do Nothing
             EndIf
         EndIf
     EndWhile
@@ -80,11 +80,11 @@ Function AccessibilityMQ101HadvarRalofSelect(Bool abMenu = True, Int aiButton = 
             aiButton = AccessibilityMSGMQ101HadvarRalofSelectMenu.Show()
             abMenu = False
             If aiButton == 0
-                AccessibilityReferenceXMarkerHeading.SetPosition(15927.0, -79342.0, 8188.0)
+                AccessibilityReferenceXMarkerHeading.SetPosition(14729.0, -79051.0, 8203.0)
                 Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
                 Utility.Wait(3.0)
             ElseIf aiButton == 1
-                AccessibilityReferenceXMarkerHeading.SetPosition(15927.0, -79342.0, 8188.0)
+                AccessibilityReferenceXMarkerHeading.SetPosition(15857.0, -78095.0, 8215.0)
                 Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
                 Utility.Wait(3.0)
             EndIf
