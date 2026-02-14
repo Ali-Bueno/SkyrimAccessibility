@@ -18,17 +18,15 @@
 ## Available Features
 - Intro Auto Walkthrough;
 - Clairvoyance. A Guiding spell which will lead you to current quest marker via sound trail.
-- Reworked Lockpicking System based on Skill Level, Hotkey G Key;
-- Sound Notify if walking in Place.
-- Audio Markers on Items, NPC, Containers, Doors, etc.[Not Yet Complete]
-- Debug Key is B. Shows Coordiantes and makes Screenshot.
+- Sound Notify if Walking in Place.
+- Audio Markers on Items, NPC, Containers, Doors, etc.[Work In Progress]
 
 ## Hotkeys
 - F Key -
 - X Key - 
 - C Key -
 - V Key -
-- G Key -
+- G Key - LockPicking. Try to pick any Lock in Radius of 3 Reters.
 - H Key -
 - U Key -
 - O Key -

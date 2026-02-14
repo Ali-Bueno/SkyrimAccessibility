@@ -2,6 +2,7 @@ Scriptname AccessibilityScriptQuestsMQ101 extends ReferenceAlias
 
 Quest Property AccessibilityQuestMQ101 Auto
 Static Property AccessibilityXMarkerHeadingMQ101 Auto
+Message Property AccessibilityMSGMQ101StartSelectMenu Auto
 ObjectReference Property AccessibilityReferenceXMarkerHeading Auto
 
 Event OnInit()
@@ -49,10 +50,24 @@ Event OnUpdate()
         Utility.Wait(5.0)
         AccessibilityReferenceXMarkerHeading.SetPosition(15927.0, -79342.0, 8188.0)
         Game.GetPlayer().TranslateToRef(AccessibilityReferenceXMarkerHeading, 300)
-
-        
+        Utility.Wait(3.0)
+        MQ101StartSelect()
         UnregisterForUpdate()
     Else
         RegisterForSingleUpdate(5.0)
     EndIf
 EndEvent
+
+Function MQ101StartSelect(Bool abMenu = True, Int aiButton = 0)
+    While abMenu
+        If aiButton != -1
+            aiButton = AccessibilityMSGMQ101StartSelectMenu.Show()
+            abMenu = False
+            If aiButton == 0
+
+            ElseIf aiButton == 1
+
+            EndIf
+        EndIf
+    EndWhile
+EndFunction
