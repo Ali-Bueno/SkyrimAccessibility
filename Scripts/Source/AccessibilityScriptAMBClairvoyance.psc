@@ -8,4 +8,5 @@ EndEvent
 
 Event OnUpdate()
     AccessibilityClairvoyance.Cast(Game.GetPlayer())
+    RegisterForSingleUpdate(8.0)
 EndEvent
