@@ -9,10 +9,7 @@ Event OnInit()
 EndEvent
 
 Event OnKeyDown(Int KeyCode)
-    Debug.Notification("Key Down")
     If KeyCode == 33 && !Utility.IsInMenuMode()
-        Debug.Notification("Key F")
-        UnregisterForControl("Toggle POV")
         Utility.Wait(0.1)
         ShowActivateMenu()
 	EndIf
@@ -36,9 +33,18 @@ Function ShowActivateMenu()
     ActivateMenu.OpenMenu()
     Int Selection = ActivateMenu.GetResultInt()
     If Selection == 0
-        Debug.Notification("Take Item Menu")
+        ShowTakeItemSubMenu()
     ElseIf Selection == 1
-        Debug.Notification("Loot Containers Menu")
+        ShowLootContainersSubMenu()
+    ElseIf Selection == 2
+        ShowLootContainersSubMenu()
+    ElseIf Selection == 3
+        ShowLootContainersSubMenu()
+    ElseIf Selection == 4
+        ShowLootContainersSubMenu()
+    ElseIf Selection == 5
+        ShowLootContainersSubMenu()
+    ElseIf Selection == 6
         ShowLootContainersSubMenu()
     EndIf
 EndFunction
@@ -50,21 +56,40 @@ EndFunction
 Function ShowLootContainersSubMenu()
     UIListMenu ShowLootContainersSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
     ObjectReference[] ContainerArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 28, 1000.0)
-    Int ContainerIndex = 0
-    While ContainerIndex < ContainerArray.Length
-        If ContainerArray[ContainerIndex] != None
-            ShowLootContainersSubMenu.AddEntryItem(ContainerArray[ContainerIndex].GetDisplayName())
-        EndIf
-        ContainerIndex += 1
-    EndWhile
     If ContainerArray.Length > 0
+        Int ContainerIndex = 0
+        While ContainerIndex < ContainerArray.Length
+            String ContainerName = (ContainerArray[ContainerIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(ContainerArray[ContainerIndex]) As Int)) 
+            If ContainerArray[ContainerIndex].GetNumItems() == 0
+                ContainerName = "(Empty) " + ContainerName
+            EndIf
+            ShowLootContainersSubMenu.AddEntryItem(ContainerName)
+            ContainerIndex += 1
+        EndWhile
         ShowLootContainersSubMenu.OpenMenu()
+        Int Selection = ShowLootContainersSubMenu.GetResultInt()
+        If Selection >= 0
+            ContainerArray[Selection].Activate(Game.GetPlayer())
+        EndIf
     EndIf
-    Int Selection = ShowLootContainersSubMenu.GetResultInt()
-    If Selection == 0
-        Debug.Notification("Take Item Menu")
-        ShowLootContainersSubMenu()
-    ElseIf Selection == 1
-        Debug.Notification("Loot Containers Menu")
-    EndIf
+EndFunction
+
+Function ShowLootNPCSubMenu()
+
+EndFunction
+
+Function ShowTalkToNPCSubMenu()
+
+EndFunction
+
+Function ShowOpenCloseDoorSubMenu()
+
+EndFunction
+
+Function ShowTrapSearchSubMenu()
+
+EndFunction
+
+Function ShowMiscActivatorsSubMenu()
+
 EndFunction

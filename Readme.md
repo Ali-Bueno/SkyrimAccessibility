@@ -23,15 +23,14 @@
 - Audio Markers on Items, NPC, Containers, Doors, etc.[Work In Progress]
 
 ## Hotkeys
-- F Key - Activate Menu. Interact with NPC, Doors, Containers, etc.[Work In Progress]
 - X Key - Lock Camera On Target. List of targets to lock camera on.[Work In Progress]
 - C Key - Autowalk. Selet Neraby Target, Interest Target or City.[Work In Progress]
-- V Key - Character Status. Health, Mana, Stamina, Debuffs.[Work In Progress]
+- V Key - Activate Menu. Interact with NPC, Doors, Containers, etc.[Work In Progress]
 - G Key - LockPicking. Try to pick any Lock in Radius of 3 Reters.
 - H Key -
 - U Key -
 - O Key - Toggle Clairvoyance. Turns On or Off Clairvoyance Autocast.
-- B Key -
+- B Key - Character Status. Health, Mana, Stamina, Debuffs.[Work In Progress]
 - K Key -
 - L Key - Debug Menu. Write Coordinates and Make ScreenShot.
 
