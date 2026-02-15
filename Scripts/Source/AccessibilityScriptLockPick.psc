@@ -16,10 +16,13 @@ Event OnInit()
 EndEvent
 
 Event OnKeyDown(Int KeyCode)
+    Debug.Notification("KeyDown")
     If KeyCode == 34 && !Utility.IsInMenuMode()
+    Debug.Notification("Key34")
         ObjectReference[] ContainerArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 28, 210.0)
         Int ContainerIndex = 0
         While ContainerIndex < ContainerArray.Length
+        Debug.Notification("While")
             If (ContainerArray[ContainerIndex] != None) && (ContainerArray[ContainerIndex].IsLocked()) && (!ContainerArray[ContainerIndex].GetLockLevel() == 255)
                 If (Game.GetPlayer().GetItemCount(SkeletonKey) >= 1)
                     (ContainerArray[ContainerIndex].Lock(false))
