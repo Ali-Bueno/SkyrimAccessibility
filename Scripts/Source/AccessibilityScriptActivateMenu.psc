@@ -21,9 +21,8 @@ Event OnKeyDown(Int KeyCode)
         UnregisterForControl("Toggle POV")
         Utility.Wait(0.1)
         UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
-
-        String[] SubMenus = new String[6]
-
+        UIListMenu TakeItemMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+        String[] SubMenus = new String[7]
         SubMenus[0] = "Take Item"
         SubMenus[1] = "Loot Containers"
         SubMenus[2] = "Loot NPC"
@@ -35,7 +34,6 @@ Event OnKeyDown(Int KeyCode)
 
 
         Int SubMenusIndex = 0
-			
         While SubMenusIndex < SubMenus.Length
             ActivateMenu.AddEntryItem(SubMenus[SubMenusIndex])
             SubMenusIndex += 1	
@@ -43,11 +41,10 @@ Event OnKeyDown(Int KeyCode)
 
         ActivateMenu.OpenMenu()
 
-        Int Selection = ActivateMenu.GetResultInt()
-
-        If Selection == 0
-			Debug.Notification("Test 1")
-		ElseIf Selection == 1
+        If ActivateMenu.GetResultInt() == 0
+			Debug.Notification("Take Item Menu")
+            TakeItemMenu.OpenMenu()
+		ElseIf ActivateMenu.GetResultInt() == 1
             Debug.Notification("Test 2")
         EndIf
 	EndIf

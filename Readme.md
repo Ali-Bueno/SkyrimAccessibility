@@ -1,6 +1,6 @@
 # The Skyrim Accessibility Mod By Dio Kyrie
 ## Install Guide
-1. Install [Skyrim AE](https://store.steampowered.com/app/489830/The_Elder_Scrolls_V_Skyrim_Special_Edition/);
+1. Install [Skyrim Special Edition](https://store.steampowered.com/app/489830/The_Elder_Scrolls_V_Skyrim_Special_Edition/);
 2. Install [ModOrganizer2](https://github.com/ModOrganizer2/modorganizer/releases);
 3. Launch Skyrim Launcher from within MO2;
 4. Download and Install Requirements with MO2;
@@ -23,7 +23,7 @@
 - Audio Markers on Items, NPC, Containers, Doors, etc.[Work In Progress]
 
 ## Hotkeys
-- F Key - Interact Menu. Interact with NPC, Doors, Containers, etc.[Work In Progress]
+- F Key - Activate Menu. Interact with NPC, Doors, Containers, etc.[Work In Progress]
 - X Key - Lock Camera On Target. List of targets to lock camera on.[Work In Progress]
 - C Key - Autowalk. Selet Neraby Target, Interest Target or City.[Work In Progress]
 - V Key - Character Status. Health, Mana, Stamina, Debuffs.[Work In Progress]
