@@ -1,4 +1,4 @@
-Scriptname AccessibilityScriptLockPick extends ObjectReference
+Scriptname AccessibilityScriptLockPick extends ReferenceAlias
 
 ;ToDo Add Unlock Sound to have audio feedback
 
