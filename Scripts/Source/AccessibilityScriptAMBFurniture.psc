@@ -1,4 +1,4 @@
-Scriptname AccessibilityScriptAMBFurniture extends ObjectReference
+Scriptname AccessibilityScriptAMBFurniture extends ReferenceAlias
 
 ;ToDo Add differen souns for Doors and Containers.
 ;ToDo Add different sounds for Locked and Unlocked.
@@ -9,7 +9,6 @@ Sound Property AccessibilityAMBFurnitureContainer Auto
 Event OnInit()
     Debug.Notification("Accessibility Ambiance Furniture Loaded")
     RegisterForSingleUpdate(5.0)
-    AccessibilityAMBFurnitureContainer = Game.GetFormFromFile(0x0609D72E, "accessibility.esp") As Sound
 EndEvent
 
 Event OnUpdate()
