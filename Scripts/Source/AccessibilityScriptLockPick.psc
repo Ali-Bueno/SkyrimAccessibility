@@ -13,13 +13,6 @@ Perk Property MasterLocks100 Auto
 
 Event OnInit()
     RegisterForKey(34)
-    Lockpick = Game.GetFormFromFile(0x0000000A, "Skyrim.esm") As MiscObject
-    SkeletonKey = Game.GetFormFromFile(0x0003A070, "Skyrim.esm") As MiscObject
-    NoviceLocks00 = Game.GetFormFromFile(0x000F392A, "Skyrim.esm") As Perk
-    ApprenticeLocks25 = Game.GetFormFromFile(0x000BE125, "Skyrim.esm") As Perk
-    AdeptLocks50 = Game.GetFormFromFile(0x000C3680, "Skyrim.esm") As Perk
-    ExpertLocks75 = Game.GetFormFromFile(0x000C3681, "Skyrim.esm") As Perk
-    MasterLocks100 = Game.GetFormFromFile(0x000C3682, "Skyrim.esm") As Perk
 EndEvent
 
 Event OnKeyDown(Int KeyCode)
