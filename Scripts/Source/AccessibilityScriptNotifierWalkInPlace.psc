@@ -6,10 +6,10 @@ Sound Property AccessibilityCNDWalkInPlace Auto
 
 Event OnInit()
     RegisterForSingleUpdate(5.0)
-    FormerPosition = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeadingWalkInPlace) As ObjectReference
 EndEvent
 
 Event OnUpdate()
+    FormerPosition = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeadingWalkInPlace) As ObjectReference
     Int ForwardKey = Input.GetMappedKey("Forward")
     Int BackwardKey = Input.GetMappedKey("Back")
     Int LeftwardKey = Input.GetMappedKey("Strafe Left")
