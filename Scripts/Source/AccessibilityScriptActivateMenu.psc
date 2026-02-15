@@ -3,11 +3,11 @@ Scriptname AccessibilityScriptActivateMenu extends ReferenceAlias
 Import UIExtensions
 Import UIListMenu
 
-Message Property AccessibilityMSGItemSearch Auto
-Message Property AccessibilityMSGContainerSearch Auto
-Message Property AccessibilityMSGDoorSearch Auto
-Message Property AccessibilityMSGNPCSearch Auto
-Message Property AccessibilityMSGTrapSearch Auto
+;Message Property AccessibilityMSGItemSearch Auto
+;Message Property AccessibilityMSGContainerSearch Auto
+;Message Property AccessibilityMSGDoorSearch Auto
+;Message Property AccessibilityMSGNPCSearch Auto
+;Message Property AccessibilityMSGTrapSearch Auto
 
 Event OnInit()
     Debug.Notification("Accessibility Activate Menu Loaded")
@@ -22,16 +22,23 @@ Event OnKeyDown(Int KeyCode)
         Utility.Wait(0.1)
         UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
 
-        String[] Test = new String[2]
+        String[] SubMenus = new String[6]
 
-        Test[0] = "Test 1"
-        Test[1] = "Test 2"
+        SubMenus[0] = "Take Item"
+        SubMenus[1] = "Loot Containers"
+        SubMenus[2] = "Loot NPC"
+        SubMenus[3] = "Talk to NPC"
+        SubMenus[4] = "Open/Close Door"
+        SubMenus[5] = "Trap Search"
+        SubMenus[6] = "Misc. Activators"
 
-        Int Index = 0
+
+
+        Int SubMenusIndex = 0
 			
-        While Index < Test.length
-            ActivateMenu.AddEntryItem(Test[Index])
-            Index += 1	
+        While SubMenusIndex < SubMenus.Length
+            ActivateMenu.AddEntryItem(SubMenus[SubMenusIndex])
+            SubMenusIndex += 1	
         EndWhile
 
         ActivateMenu.OpenMenu()
