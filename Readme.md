@@ -22,7 +22,7 @@
 - Audio Markers on Items, NPC, Containers, Doors, etc.[Work In Progress]
 
 ## Hotkeys
-- F Key - Interact Menu.[Work In Progress]
+- F Key - Interact Menu. Interact with NPC, Doors, Containers, etc.[Work In Progress]
 - X Key - Lock Camera On Target. List of targets to lock camera on.[Work In Progress]
 - C Key - Autowalk. Selet Neraby Target, Interest Target or City.[Work In Progress]
 - V Key - Character Status. Health, Mana, Stamina, Debuffs.[Work In Progress]
