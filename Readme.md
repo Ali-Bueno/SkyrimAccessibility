@@ -30,7 +30,7 @@
 - G Key - LockPicking. Try to pick any Lock in Radius of 3 Reters.
 - H Key -
 - U Key -
-- O Key -
+- O Key - Toggle Clairvoyance. Turns On or Off Clairvoyance Autocast.
 - B Key -
 - K Key -
 - L Key - Debug Menu. Write Coordinates and Make ScreenShot.
