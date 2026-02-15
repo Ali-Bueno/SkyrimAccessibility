@@ -1,6 +1,9 @@
 Scriptname AccessibilityScriptLockPick extends ReferenceAlias
 
-;ToDo Add Unlock Sound to have audio feedback
+;ToDo Add sound for when not enough lockpicks
+
+Sound Property AccessibilityCNDLockPickFail Auto
+Sound Property AccessibilityCNDLockPickSuccess Auto
 
 MiscObject Property Lockpick Auto
 MiscObject Property SkeletonKey Auto
@@ -26,11 +29,13 @@ Event OnKeyDown(Int KeyCode)
             If (ContainerArray[ContainerIndex] != None) && (ContainerArray[ContainerIndex].IsLocked()) && (!ContainerArray[ContainerIndex].GetLockLevel() == 255)
                 If (Game.GetPlayer().GetItemCount(SkeletonKey) >= 1)
                     (ContainerArray[ContainerIndex].Lock(false))
+                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                 Else
                     If (ContainerArray[ContainerIndex].GetLockLevel() >= 0 && ContainerArray[ContainerIndex].GetLockLevel() <= 1)
                         If (Game.GetPlayer().HasPerk(NoviceLocks00))
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
                                 (ContainerArray[ContainerIndex].Lock(false))
+                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                 (Game.GetPlayer().RemoveItem(Lockpick, 1))
                                 (Game.AdvanceSkill("Lockpicking", 1.0))
                             Else
@@ -40,11 +45,13 @@ Event OnKeyDown(Int KeyCode)
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 5)
                                 If (Utility.RandomInt(0, 1) == 0)
                                     (ContainerArray[ContainerIndex].Lock(false))
+                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                     (Game.GetPlayer().RemoveItem(Lockpick, 5))
                                     (Game.AdvanceSkill("Lockpicking", 3.0))
                                 Else
                                     (Game.GetPlayer().RemoveItem(Lockpick, 5))
                                     (Game.AdvanceSkill("Lockpicking", 2.0))
+                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
                                 EndIf
                             Else
                                 Debug.Notification("Not enough Lockpicks")
@@ -55,6 +62,7 @@ Event OnKeyDown(Int KeyCode)
                         If (Game.GetPlayer().HasPerk(ApprenticeLocks25))
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
                                 (ContainerArray[ContainerIndex].Lock(false))
+                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                 (Game.GetPlayer().RemoveItem(Lockpick, 1))
                                 (Game.AdvanceSkill("Lockpicking", 1.0))
                             Else
@@ -64,11 +72,13 @@ Event OnKeyDown(Int KeyCode)
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 10)
                                 If (Utility.RandomInt(0, 1) == 0)
                                     (ContainerArray[ContainerIndex].Lock(false))
+                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                     (Game.GetPlayer().RemoveItem(Lockpick, 10))
                                     (Game.AdvanceSkill("Lockpicking", 7.0))
                                 Else
                                     (Game.GetPlayer().RemoveItem(Lockpick, 10))
                                     (Game.AdvanceSkill("Lockpicking", 4.0))
+                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
                                 EndIf
                             Else
                                 Debug.Notification("Not enough Lockpicks")
@@ -79,6 +89,7 @@ Event OnKeyDown(Int KeyCode)
                         If (Game.GetPlayer().HasPerk(AdeptLocks50))
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
                                 (ContainerArray[ContainerIndex].Lock(false))
+                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                 (Game.GetPlayer().RemoveItem(Lockpick, 1))
                                 (Game.AdvanceSkill("Lockpicking", 1.0))
                             Else
@@ -88,11 +99,13 @@ Event OnKeyDown(Int KeyCode)
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 15)
                                 If (Utility.RandomInt(0, 1) == 0)
                                     (ContainerArray[ContainerIndex].Lock(false))
+                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                     (Game.GetPlayer().RemoveItem(Lockpick, 15))
                                     (Game.AdvanceSkill("Lockpicking", 11.0))
                                 Else
                                     (Game.GetPlayer().RemoveItem(Lockpick, 15))
                                     (Game.AdvanceSkill("Lockpicking", 8.0))
+                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
                                 EndIf
                             Else
                                 Debug.Notification("Not enough Lockpicks")
@@ -103,6 +116,7 @@ Event OnKeyDown(Int KeyCode)
                         If (Game.GetPlayer().HasPerk(ExpertLocks75))
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
                                 (ContainerArray[ContainerIndex].Lock(false))
+                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                 (Game.GetPlayer().RemoveItem(Lockpick, 1))
                                 (Game.AdvanceSkill("Lockpicking", 1.0))
                             Else
@@ -112,11 +126,13 @@ Event OnKeyDown(Int KeyCode)
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 20)
                                 If (Utility.RandomInt(0, 1) == 0)
                                     (ContainerArray[ContainerIndex].Lock(false))
+                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                     (Game.GetPlayer().RemoveItem(Lockpick, 20))
                                     (Game.AdvanceSkill("Lockpicking", 15.0))
                                 Else
                                     (Game.GetPlayer().RemoveItem(Lockpick, 20))
                                     (Game.AdvanceSkill("Lockpicking", 12.0))
+                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
                                 EndIf
                             Else
                                 Debug.Notification("Not enough Lockpicks")
@@ -127,6 +143,7 @@ Event OnKeyDown(Int KeyCode)
                         If (Game.GetPlayer().HasPerk(MasterLocks100))
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
                                 (ContainerArray[ContainerIndex].Lock(false))
+                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                 (Game.GetPlayer().RemoveItem(Lockpick, 1))
                                 (Game.AdvanceSkill("Lockpicking", 1.0))
                             Else
@@ -136,11 +153,13 @@ Event OnKeyDown(Int KeyCode)
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 25)
                                 If (Utility.RandomInt(0, 1) == 0)
                                     (ContainerArray[ContainerIndex].Lock(false))
+                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                     (Game.GetPlayer().RemoveItem(Lockpick, 25))
                                     (Game.AdvanceSkill("Lockpicking", 20.0))
                                 Else
                                     (Game.GetPlayer().RemoveItem(Lockpick, 25))
                                     (Game.AdvanceSkill("Lockpicking", 15.0))
+                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
                                 EndIf
                             Else
                                 Debug.Notification("Not enough Lockpicks")
@@ -157,11 +176,13 @@ Event OnKeyDown(Int KeyCode)
             If (DoorArray[DoorIndex] != None) && (DoorArray[DoorIndex].IsLocked()) && (!DoorArray[DoorIndex].GetLockLevel() == 255)
                 If (Game.GetPlayer().GetItemCount(SkeletonKey) >= 1)
                     (DoorArray[DoorIndex].Lock(false))
+                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                 Else
                     If (DoorArray[DoorIndex].GetLockLevel() >= 0 && DoorArray[DoorIndex].GetLockLevel() <= 1)
                         If (Game.GetPlayer().HasPerk(NoviceLocks00))
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
                                 (DoorArray[DoorIndex].Lock(false))
+                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                 (Game.GetPlayer().RemoveItem(Lockpick, 1))
                                 (Game.AdvanceSkill("Lockpicking", 1.0))
                             Else
@@ -171,11 +192,13 @@ Event OnKeyDown(Int KeyCode)
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 5)
                                 If (Utility.RandomInt(0, 1) == 0)
                                     (DoorArray[DoorIndex].Lock(false))
+                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                     (Game.GetPlayer().RemoveItem(Lockpick, 5))
                                     (Game.AdvanceSkill("Lockpicking", 3.0))
                                 Else
                                     (Game.GetPlayer().RemoveItem(Lockpick, 5))
                                     (Game.AdvanceSkill("Lockpicking", 2.0))
+                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
                                 EndIf
                             Else
                                 Debug.Notification("Not enough Lockpicks")
@@ -186,6 +209,7 @@ Event OnKeyDown(Int KeyCode)
                         If (Game.GetPlayer().HasPerk(ApprenticeLocks25))
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
                                 (DoorArray[DoorIndex].Lock(false))
+                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                 (Game.GetPlayer().RemoveItem(Lockpick, 1))
                                 (Game.AdvanceSkill("Lockpicking", 1.0))
                             Else
@@ -195,11 +219,13 @@ Event OnKeyDown(Int KeyCode)
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 10)
                                 If (Utility.RandomInt(0, 1) == 0)
                                     (DoorArray[DoorIndex].Lock(false))
+                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                     (Game.GetPlayer().RemoveItem(Lockpick, 10))
                                     (Game.AdvanceSkill("Lockpicking", 7.0))
                                 Else
                                     (Game.GetPlayer().RemoveItem(Lockpick, 10))
                                     (Game.AdvanceSkill("Lockpicking", 4.0))
+                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
                                 EndIf
                             Else
                                 Debug.Notification("Not enough Lockpicks")
@@ -210,6 +236,7 @@ Event OnKeyDown(Int KeyCode)
                         If (Game.GetPlayer().HasPerk(AdeptLocks50))
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
                                 (DoorArray[DoorIndex].Lock(false))
+                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                 (Game.GetPlayer().RemoveItem(Lockpick, 1))
                                 (Game.AdvanceSkill("Lockpicking", 1.0))
                             Else
@@ -219,11 +246,13 @@ Event OnKeyDown(Int KeyCode)
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 15)
                                 If (Utility.RandomInt(0, 1) == 0)
                                     (DoorArray[DoorIndex].Lock(false))
+                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                     (Game.GetPlayer().RemoveItem(Lockpick, 15))
                                     (Game.AdvanceSkill("Lockpicking", 11.0))
                                 Else
                                     (Game.GetPlayer().RemoveItem(Lockpick, 15))
                                     (Game.AdvanceSkill("Lockpicking", 8.0))
+                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
                                 EndIf
                             Else
                                 Debug.Notification("Not enough Lockpicks")
@@ -234,6 +263,7 @@ Event OnKeyDown(Int KeyCode)
                         If (Game.GetPlayer().HasPerk(ExpertLocks75))
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
                                 (DoorArray[DoorIndex].Lock(false))
+                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                 (Game.GetPlayer().RemoveItem(Lockpick, 1))
                                 (Game.AdvanceSkill("Lockpicking", 1.0))
                             Else
@@ -243,11 +273,13 @@ Event OnKeyDown(Int KeyCode)
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 20)
                                 If (Utility.RandomInt(0, 1) == 0)
                                     (DoorArray[DoorIndex].Lock(false))
+                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                     (Game.GetPlayer().RemoveItem(Lockpick, 20))
                                     (Game.AdvanceSkill("Lockpicking", 15.0))
                                 Else
                                     (Game.GetPlayer().RemoveItem(Lockpick, 20))
                                     (Game.AdvanceSkill("Lockpicking", 12.0))
+                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
                                 EndIf
                             Else
                                 Debug.Notification("Not enough Lockpicks")
@@ -258,6 +290,7 @@ Event OnKeyDown(Int KeyCode)
                         If (Game.GetPlayer().HasPerk(MasterLocks100))
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
                                 (DoorArray[DoorIndex].Lock(false))
+                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                 (Game.GetPlayer().RemoveItem(Lockpick, 1))
                                 (Game.AdvanceSkill("Lockpicking", 1.0))
                             Else
@@ -267,11 +300,13 @@ Event OnKeyDown(Int KeyCode)
                             If (Game.GetPlayer().GetItemCount(Lockpick) >= 25)
                                 If (Utility.RandomInt(0, 1) == 0)
                                     (DoorArray[DoorIndex].Lock(false))
+                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                                     (Game.GetPlayer().RemoveItem(Lockpick, 25))
                                     (Game.AdvanceSkill("Lockpicking", 20.0))
                                 Else
                                     (Game.GetPlayer().RemoveItem(Lockpick, 25))
                                     (Game.AdvanceSkill("Lockpicking", 15.0))
+                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
                                 EndIf
                             Else
                                 Debug.Notification("Not enough Lockpicks")
