@@ -22,7 +22,7 @@ Event OnKeyDown(Int KeyCode)
     Debug.Notification("KeyDown")
     If KeyCode == 34 && !Utility.IsInMenuMode()
     Debug.Notification("Key34")
-        ObjectReference[] ContainerArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 28, 210.0)
+        ObjectReference[] ContainerArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 28, 140.0)
         Int ContainerIndex = 0
         While ContainerIndex < ContainerArray.Length
         Debug.Notification("While")
@@ -170,7 +170,7 @@ Event OnKeyDown(Int KeyCode)
             EndIf
             ContainerIndex += 1
         EndWhile
-        ObjectReference[] DoorArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 29, 210.0)
+        ObjectReference[] DoorArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 29, 140.0)
         Int DoorIndex = 0
         While DoorIndex < DoorArray.Length
             If (DoorArray[DoorIndex] != None) && (DoorArray[DoorIndex].IsLocked()) && (!DoorArray[DoorIndex].GetLockLevel() == 255)

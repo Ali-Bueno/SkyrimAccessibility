@@ -5,11 +5,11 @@ Import UIListMenu
 
 Event OnInit()
     Debug.Notification("Accessibility Activate Menu Loaded")
-    RegisterForKey(33)
+    RegisterForKey(47)
 EndEvent
 
 Event OnKeyDown(Int KeyCode)
-    If KeyCode == 33 && !Utility.IsInMenuMode()
+    If KeyCode == 47 && !Utility.IsInMenuMode()
         Utility.Wait(0.1)
         ShowActivateMenu()
 	EndIf
@@ -55,7 +55,7 @@ EndFunction
 
 Function ShowLootContainersSubMenu()
     UIListMenu ShowLootContainersSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
-    ObjectReference[] ContainerArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 28, 1000.0)
+    ObjectReference[] ContainerArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 28, 700.0)
     If ContainerArray.Length > 0
         Int ContainerIndex = 0
         While ContainerIndex < ContainerArray.Length
@@ -63,6 +63,10 @@ Function ShowLootContainersSubMenu()
             If ContainerArray[ContainerIndex].GetNumItems() == 0
                 ContainerName = "(Empty) " + ContainerName
             EndIf
+            If ContainerArray[ContainerIndex].IsLocked() == 1
+                ContainerName = "(Locked) " + ContainerName
+            EndIf
+            IsLocked()
             ShowLootContainersSubMenu.AddEntryItem(ContainerName)
             ContainerIndex += 1
         EndWhile

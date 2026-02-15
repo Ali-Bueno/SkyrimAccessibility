@@ -19,14 +19,14 @@
 ## Available Features
 - Intro Auto Walkthrough;
 - Clairvoyance. A Guiding spell which will lead you to current quest marker via sound trail.
-- Sound Notify if Walking in Place.
+- Sound Notify if Walking in Place.[Work In Progress]
 - Audio Markers on Items, NPC, Containers, Doors, etc.[Work In Progress]
 
 ## Hotkeys
 - X Key - Lock Camera On Target. List of targets to lock camera on.[Work In Progress]
 - C Key - Autowalk. Selet Neraby Target, Interest Target or City.[Work In Progress]
-- V Key - Activate Menu. Interact with NPC, Doors, Containers, etc.[Work In Progress]
-- G Key - LockPicking. Try to pick any Lock in Radius of 3 Reters.
+- V Key - Activate Menu. Interact with NPC, Doors, Containers, etc.Max Distance 10 Meters.[Work In Progress]
+- G Key - LockPicking. Try to pick All Locks in Radius of 2 Meters.
 - H Key -
 - U Key -
 - O Key - Toggle Clairvoyance. Turns On or Off Clairvoyance Autocast.
