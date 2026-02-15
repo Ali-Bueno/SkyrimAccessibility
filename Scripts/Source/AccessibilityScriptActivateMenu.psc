@@ -1,8 +1,8 @@
-Scriptname AccessibilityScriptActivateMenu extends ObjectReference
+Scriptname AccessibilityScriptActivateMenu extends ReferenceAlias
 
-;ToDo Should I keep this script? I will remake UI is there any use now?
+Import UIExtensions
+Import UIListMenu
 
-Message Property AccessibilityMSGActivateMenu Auto
 Message Property AccessibilityMSGItemSearch Auto
 Message Property AccessibilityMSGContainerSearch Auto
 Message Property AccessibilityMSGDoorSearch Auto
@@ -14,42 +14,34 @@ Event OnInit()
     RegisterForKey(33)
 EndEvent
 
-;/
 Event OnKeyDown(Int KeyCode)
+    Debug.Notification("Key Down")
     If KeyCode == 33 && !Utility.IsInMenuMode()
+        Debug.Notification("Key F")
         UnregisterForControl("Toggle POV")
         Utility.Wait(0.1)
-        Menu()
+        UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+
+        String[] Test = new String[2]
+
+        Test[0] = "Test 1"
+        Test[1] = "Test 2"
+
+        Int Index = 0
+			
+        While Index < Test.length
+            ActivateMenu.AddEntryItem(Test[Index])
+            Index += 1	
+        EndWhile
+
+        ActivateMenu.OpenMenu()
+
+        Int Selection = ActivateMenu.GetResultInt()
+
+        If Selection == 0
+			Debug.Notification("Test 1")
+		ElseIf Selection == 1
+            Debug.Notification("Test 2")
+        EndIf
 	EndIf
 EndEvent
-/;
-
-Function Menu(Bool abMenu = True, Int aiButton = 0)
-    While abMenu
-        If aiButton != -1
-            aiButton = AccessibilityMSGActivateMenu.Show()
-            abMenu = False
-            If aiButton == 0
-                aiButton = AccessibilityMSGItemSearch.Show()
-                If aiButton == 0
-                EndIf
-            ElseIf aiButton == 1
-                aiButton = AccessibilityMSGContainerSearch.Show()
-                If aiButton == 0
-                EndIf
-            ElseIf aiButton == 2
-                aiButton = AccessibilityMSGDoorSearch.Show()
-                If aiButton == 0
-                EndIf
-            ElseIf aiButton == 3
-                aiButton = AccessibilityMSGNPCSearch.Show()
-                If aiButton == 0
-                EndIf
-            ElseIf aiButton == 4
-                aiButton = AccessibilityMSGTrapSearch.Show()
-                If aiButton == 0
-                EndIf
-            EndIf
-        EndIf
-    EndWhile
-EndFunction
