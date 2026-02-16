@@ -9,14 +9,17 @@ EndEvent
 
 Event OnPlayerLoadGame()
     RegisterForSingleUpdate(3.0)
+    Debug.Notification("Load Game")
 EndEvent
 
 Event OnUpdate()
+    Debug.Notification("Update")
     WalkInPlace()
     RegisterForSingleUpdate(3.0)
 EndEvent
 
 Function WalkInPlace()
+    Debug.Notification("function")
     FormerPosition = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeadingWalkInPlace) As ObjectReference
     Int ForwardKey = Input.GetMappedKey("Forward")
     Int BackwardKey = Input.GetMappedKey("Back")
