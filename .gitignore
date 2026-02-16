@@ -11,6 +11,7 @@
 !/Scripts/Source/Accessibility*
 # Git Related
 !.gitignore
+!.gitattributes
 !Readme.md
 !License.md
 !Attribution.md
