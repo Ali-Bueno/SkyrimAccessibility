@@ -1,5 +1,10 @@
 Scriptname AccessibilityScriptActivateMenu extends ReferenceAlias
 
+;ToDo Real time no pause?
+;ToDo Focused target. Will spam message about distance and status to object.
+;ToDo Realtime update of array.
+;ToDo Add quest objectives menu
+
 Import UIExtensions
 Import UIListMenu
 
