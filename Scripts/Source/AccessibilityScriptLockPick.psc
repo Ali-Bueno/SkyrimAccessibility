@@ -1,6 +1,7 @@
 Scriptname AccessibilityScriptLockPick extends ReferenceAlias
 
 ;ToDo Add sound for when not enough lockpicks
+;ToDo Add a menu With UIExtensionss
 
 Sound Property AccessibilityCNDLockPickFail Auto
 Sound Property AccessibilityCNDLockPickSuccess Auto
