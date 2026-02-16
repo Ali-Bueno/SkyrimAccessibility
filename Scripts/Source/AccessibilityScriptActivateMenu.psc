@@ -37,15 +37,15 @@ Function ShowActivateMenu()
     ElseIf Selection == 1
         ShowLootContainersSubMenu()
     ElseIf Selection == 2
-        ShowLootContainersSubMenu()
+        ShowLootNPCSubMenu()
     ElseIf Selection == 3
-        ShowLootContainersSubMenu()
+        ShowTalkToNPCSubMenu()
     ElseIf Selection == 4
-        ShowLootContainersSubMenu()
+        ShowOpenCloseDoorSubMenu()
     ElseIf Selection == 5
-        ShowLootContainersSubMenu()
+        ShowTrapSearchSubMenu()
     ElseIf Selection == 6
-        ShowLootContainersSubMenu()
+        ShowMiscActivatorsSubMenu()
     EndIf
 EndFunction
 
@@ -78,7 +78,7 @@ Function ShowLootContainersSubMenu()
 EndFunction
 
 Function ShowLootNPCSubMenu()
-    UIListMenu ShowLootContainersSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    UIListMenu ShowLootNPCSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
     ObjectReference[] LootNPCArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 43, 700.0)
     If LootNPCArray.Length > 0
         Int LootNPCIndex = 0
@@ -89,12 +89,12 @@ Function ShowLootNPCSubMenu()
             EndIf
             Actor CurrentNPC = LootNPCArray[LootNPCIndex] As Actor
             If CurrentNPC.IsDead()
-                ShowLootContainersSubMenu.AddEntryItem(ContainerName)
+                ShowLootNPCSubMenu.AddEntryItem(ContainerName)
             EndIf
             LootNPCIndex += 1
         EndWhile
-        ShowLootContainersSubMenu.OpenMenu()
-        Int Selection = ShowLootContainersSubMenu.GetResultInt()
+        ShowLootNPCSubMenu.OpenMenu()
+        Int Selection = ShowLootNPCSubMenu.GetResultInt()
         If Selection >= 0
             LootNPCArray[Selection].Activate(Game.GetPlayer())
         EndIf
@@ -102,7 +102,7 @@ Function ShowLootNPCSubMenu()
 EndFunction
 
 Function ShowTalkToNPCSubMenu()
-    UIListMenu ShowLootContainersSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    UIListMenu ShowTalkToNPCSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
     ObjectReference[] TalkToNPCArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 43, 700.0)
     If TalkToNPCArray.Length > 0
         Int TalkToNPCIndex = 0
@@ -110,12 +110,12 @@ Function ShowTalkToNPCSubMenu()
             String ContainerName = (TalkToNPCArray[TalkToNPCIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(TalkToNPCArray[TalkToNPCIndex]) As Int))
             Actor CurrentNPC = TalkToNPCArray[TalkToNPCIndex] As Actor
             If !CurrentNPC.IsDead()
-                ShowLootContainersSubMenu.AddEntryItem(ContainerName)
+                ShowTalkToNPCSubMenu.AddEntryItem(ContainerName)
             EndIf
             TalkToNPCIndex += 1
         EndWhile
-        ShowLootContainersSubMenu.OpenMenu()
-        Int Selection = ShowLootContainersSubMenu.GetResultInt()
+        ShowTalkToNPCSubMenu.OpenMenu()
+        Int Selection = ShowTalkToNPCSubMenu.GetResultInt()
         If Selection >= 0
             TalkToNPCArray[Selection].Activate(Game.GetPlayer())
         EndIf
@@ -123,7 +123,7 @@ Function ShowTalkToNPCSubMenu()
 EndFunction
 
 Function ShowOpenCloseDoorSubMenu()
-    UIListMenu ShowLootContainersSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    UIListMenu ShowOpenCloseDoorSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
     ObjectReference[] OpenCloseDoorArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 29, 700.0)
     If OpenCloseDoorArray.Length > 0
         Int OpenCloseDoorIndex = 0
@@ -132,11 +132,11 @@ Function ShowOpenCloseDoorSubMenu()
             If OpenCloseDoorArray[OpenCloseDoorIndex].IsLocked() == 1
                 ContainerName = "(Locked) " + ContainerName
             EndIf
-            ShowLootContainersSubMenu.AddEntryItem(ContainerName)
+            ShowOpenCloseDoorSubMenu.AddEntryItem(ContainerName)
             OpenCloseDoorIndex += 1
         EndWhile
-        ShowLootContainersSubMenu.OpenMenu()
-        Int Selection = ShowLootContainersSubMenu.GetResultInt()
+        ShowOpenCloseDoorSubMenu.OpenMenu()
+        Int Selection = ShowOpenCloseDoorSubMenu.GetResultInt()
         If Selection >= 0
             OpenCloseDoorArray[Selection].Activate(Game.GetPlayer())
         EndIf
