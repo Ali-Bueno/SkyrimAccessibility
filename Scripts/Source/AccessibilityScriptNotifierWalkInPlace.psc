@@ -9,24 +9,20 @@ EndEvent
 
 Event OnPlayerLoadGame()
     RegisterForSingleUpdate(3.0)
-    Debug.Notification("Load Game")
 EndEvent
 
 Event OnUpdate()
-    Debug.Notification("Update")
     WalkInPlace()
     RegisterForSingleUpdate(3.0)
 EndEvent
 
 Function WalkInPlace()
-    Debug.Notification("function")
     FormerPosition = Game.GetPlayer().PlaceAtMe(AccessibilityXMarkerHeadingWalkInPlace) As ObjectReference
     Int ForwardKey = Input.GetMappedKey("Forward")
     Int BackwardKey = Input.GetMappedKey("Back")
     Int LeftwardKey = Input.GetMappedKey("Strafe Left")
     Int RightwardKey = Input.GetMappedKey("Strafe Right")
     If Input.IsKeyPressed(ForwardKey) || Input.IsKeyPressed(BackwardKey) || Input.IsKeyPressed(LeftwardKey) || Input.IsKeyPressed(RightwardKey)
-        Debug.Notification("KeyPressed")
         FormerPosition.MoveTo(Game.GetPlayer())
         Utility.Wait(3.0)
         If FormerPosition.GetDistance(Game.GetPlayer()) < 45
