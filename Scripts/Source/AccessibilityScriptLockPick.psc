@@ -1,7 +1,9 @@
 Scriptname AccessibilityScriptLockPick extends ReferenceAlias
 
 ;ToDo Add sound for when not enough lockpicks
-;ToDo Add a menu With UIExtensionss
+;ToDo Add a menu With UIExtensions
+;ToDo Reduce scale of code by introducing a function.
+;ToDo Change the lockpick ammount need and exp gain dynamicaly based on lock level instead of hardcoding every time.
 
 Sound Property AccessibilityCNDLockPickFail Auto
 Sound Property AccessibilityCNDLockPickSuccess Auto
