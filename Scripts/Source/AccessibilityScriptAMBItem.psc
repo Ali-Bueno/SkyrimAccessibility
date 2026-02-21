@@ -1,4 +1,4 @@
-Scriptname AccessibilityScriptAMBItem extends ObjectReference
+Scriptname AccessibilityScriptAMBItem extends ReferenceAlias
 
 ;ToDo Sounds, Sounds, and Sounds....
 ;ToDo Add more Items
