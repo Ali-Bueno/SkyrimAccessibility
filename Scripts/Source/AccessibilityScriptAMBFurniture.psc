@@ -1,9 +1,9 @@
 Scriptname AccessibilityScriptAMBFurniture extends ReferenceAlias
 
 ;ToDo Add differen souns for Doors and Containers.
-;ToDo Add different sounds for Locked and Unlocked.
 
 Sound Property AccessibilityAMBFurnitureContainer Auto
+Sound Property AccessibilityAMBFurnitureDoor Auto
 
 
 Event OnInit()

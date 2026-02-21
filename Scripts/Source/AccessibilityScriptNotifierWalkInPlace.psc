@@ -22,7 +22,7 @@ Function WalkInPlace()
     Int BackwardKey = Input.GetMappedKey("Back")
     Int LeftwardKey = Input.GetMappedKey("Strafe Left")
     Int RightwardKey = Input.GetMappedKey("Strafe Right")
-    If Input.IsKeyPressed(ForwardKey) || Input.IsKeyPressed(BackwardKey) || Input.IsKeyPressed(LeftwardKey) || Input.IsKeyPressed(RightwardKey)
+    If (Input.IsKeyPressed(ForwardKey) || Input.IsKeyPressed(BackwardKey) || Input.IsKeyPressed(LeftwardKey) || Input.IsKeyPressed(RightwardKey)) && !Utility.IsInMenuMode()
         FormerPosition.MoveTo(Game.GetPlayer())
         Utility.Wait(3.0)
         If FormerPosition.GetDistance(Game.GetPlayer()) < 45

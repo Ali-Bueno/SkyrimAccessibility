@@ -38,7 +38,17 @@
 - TTS is not proposed by this Mod
 
 ## How to Install Mod Organizer 2
-Work In progress
+Launch Mod Organizer 2 Installer.  
+Accept the agreement.  
+Select a folder.   
+Use recommended install.  
+Check create desktop shortcut.  
+Wait for it to install.  
+Launch Mod Organizer.  
+Create a new Instance.  
+Select Create Portable Instance.  
+Select a game to manage.
+During Configure your profile settings check to use profile specific ini files and save files.  
 
 ## How to use Mod Organizer 2
 Launch Mod Organizer 2.  
