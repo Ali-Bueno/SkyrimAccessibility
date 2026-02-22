@@ -85,7 +85,7 @@ EndFunction
 Function ShowLootNPCSubMenu()
     UIListMenu ShowLootNPCSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
     ObjectReference[] TotalNPCArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 43, 700.0)
-    If TotalNPCArray.Length > 1
+    If TotalNPCArray.Length > 0
         Int TotalNPCIndex = 0
         Int DeadNPCIndex = 0
         ObjectReference[] DeadNPCArray = new ObjectReference[128]
@@ -106,7 +106,9 @@ Function ShowLootNPCSubMenu()
             ShowLootNPCSubMenu.AddEntryItem(Name)
             MenuEntryIndex += 1
         EndWhile
-        ShowLootNPCSubMenu.OpenMenu()
+        If MenuEntryIndex > 0
+            ShowLootNPCSubMenu.OpenMenu()
+        EndIf
         Int Selection = ShowLootNPCSubMenu.GetResultInt()
         If Selection >= 0
             DeadNPCArray[Selection].Activate(Game.GetPlayer())
