@@ -5,8 +5,16 @@ Scriptname AccessibilityScriptAMBItem extends ReferenceAlias
 ;ToDo Add keyword specific sounds later.
 
 
-Sound Property AccessibilityAMBItemPotion Auto
+Sound Property AccessibilityAMBItemIngestible Auto
 Sound Property AccessibilityAMBItemWeapon Auto
+Sound Property AccessibilityAMBItemAmmo Auto
+Sound Property AccessibilityAMBItemArmor Auto
+Sound Property AccessibilityAMBItemBook Auto
+Sound Property AccessibilityAMBItemKey Auto
+Sound Property AccessibilityAMBItemSoulGem Auto
+Sound Property AccessibilityAMBItemIngredient Auto
+Sound Property AccessibilityAMBItemScroll Auto
+Sound Property AccessibilityAMBItemMisc Auto
 
 Event OnInit()
     RegisterForSingleUpdate(5.0)
@@ -32,7 +40,7 @@ Function FindAllIngestible()
     While Index < Array.Length
         If Array[Index] != None
             Utility.Wait(Utility.RandomFloat())
-            AccessibilityAMBItemPotion.Play(Array[Index])
+            AccessibilityAMBItemIngestible.Play(Array[Index])
         EndIf
         Index += 1
     EndWhile
@@ -56,7 +64,7 @@ Function FindAllAmmo()
     While Index < Array.Length
         If Array[Index] != None
             Utility.Wait(Utility.RandomFloat())
-            AccessibilityAMBItemWeapon.Play(Array[Index])
+            AccessibilityAMBItemAmmo.Play(Array[Index])
         EndIf
         Index += 1
     EndWhile
@@ -68,7 +76,7 @@ Function FindAllArmors()
     While Index < Array.Length
         If Array[Index] != None
             Utility.Wait(Utility.RandomFloat())
-            AccessibilityAMBItemWeapon.Play(Array[Index])
+            AccessibilityAMBItemArmor.Play(Array[Index])
         EndIf
         Index += 1
     EndWhile
@@ -80,7 +88,7 @@ Function FindAllBooks()
     While Index < Array.Length
         If Array[Index] != None
             Utility.Wait(Utility.RandomFloat())
-            AccessibilityAMBItemWeapon.Play(Array[Index])
+            AccessibilityAMBItemBook.Play(Array[Index])
         EndIf
         Index += 1
     EndWhile
@@ -92,7 +100,7 @@ Function FindAllKeys()
     While Index < Array.Length
         If Array[Index] != None
             Utility.Wait(Utility.RandomFloat())
-            AccessibilityAMBItemWeapon.Play(Array[Index])
+            AccessibilityAMBItemKey.Play(Array[Index])
         EndIf
         Index += 1
     EndWhile
@@ -104,7 +112,7 @@ Function FindAllSoulGems()
     While Index < Array.Length
         If Array[Index] != None
             Utility.Wait(Utility.RandomFloat())
-            AccessibilityAMBItemWeapon.Play(Array[Index])
+            AccessibilityAMBItemSoulGem.Play(Array[Index])
         EndIf
         Index += 1
     EndWhile
@@ -116,7 +124,7 @@ Function FindAllIngredients()
     While Index < Array.Length
         If Array[Index] != None
             Utility.Wait(Utility.RandomFloat())
-            AccessibilityAMBItemWeapon.Play(Array[Index])
+            AccessibilityAMBItemIngredient.Play(Array[Index])
         EndIf
         Index += 1
     EndWhile
@@ -128,7 +136,7 @@ Function FindAllScrolls()
     While Index < Array.Length
         If Array[Index] != None
             Utility.Wait(Utility.RandomFloat())
-            AccessibilityAMBItemWeapon.Play(Array[Index])
+            AccessibilityAMBItemScroll.Play(Array[Index])
         EndIf
         Index += 1
     EndWhile
@@ -140,7 +148,7 @@ Function FindAllMisc()
     While Index < Array.Length
         If Array[Index] != None
             Utility.Wait(Utility.RandomFloat())
-            AccessibilityAMBItemWeapon.Play(Array[Index])
+            AccessibilityAMBItemMisc.Play(Array[Index])
         EndIf
         Index += 1
     EndWhile
