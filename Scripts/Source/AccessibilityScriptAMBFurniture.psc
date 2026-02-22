@@ -17,25 +17,25 @@ Event OnUpdate()
 EndEvent
 
 Function FindAllContainers()
-    ObjectReference[] ContainerArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 28, 3000.0)
-    Int ContainerIndex = 0
-    While ContainerIndex < ContainerArray.Length
-        If ContainerArray[ContainerIndex] != None
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 28, 3000.0)
+    Int Index = 0
+    While Index < Array.Length
+        If Array[Index] != None
             Utility.Wait(Utility.RandomFloat())
-            AccessibilityAMBFurnitureContainer.Play(ContainerArray[ContainerIndex])
+            AccessibilityAMBFurnitureContainer.Play(Array[Index])
         EndIf
-        ContainerIndex += 1
+        Index += 1
     EndWhile
 EndFunction
 
 Function FindAllDoors()
-    ObjectReference[] DoorArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 29, 3000.0)
-    Int DoorIndex = 0
-    While DoorIndex < DoorArray.Length
-        If DoorArray[DoorIndex] != None
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 29, 3000.0)
+    Int Index = 0
+    While Index < Array.Length
+        If Array[Index] != None
             Utility.Wait(Utility.RandomFloat())
-            AccessibilityAMBFurnitureDoor.Play(DoorArray[DoorIndex])
+            AccessibilityAMBFurnitureDoor.Play(Array[Index])
         EndIf
-        DoorIndex += 1
+        Index += 1
     EndWhile
 EndFunction
