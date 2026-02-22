@@ -64,14 +64,14 @@ Function ShowLootContainersSubMenu()
     If ContainerArray.Length > 0
         Int ContainerIndex = 0
         While ContainerIndex < ContainerArray.Length
-            String ContainerName = (ContainerArray[ContainerIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(ContainerArray[ContainerIndex]) As Int)) 
+            String Name = (ContainerArray[ContainerIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(ContainerArray[ContainerIndex]) As Int)) 
             If ContainerArray[ContainerIndex].GetNumItems() == 0
-                ContainerName = "(Empty) " + ContainerName
+                Name = "(Empty) " + Name
             EndIf
             If ContainerArray[ContainerIndex].IsLocked() == 1
-                ContainerName = "(Locked) " + ContainerName
+                Name = "(Locked) " + Name
             EndIf
-            ShowLootContainersSubMenu.AddEntryItem(ContainerName)
+            ShowLootContainersSubMenu.AddEntryItem(Name)
             ContainerIndex += 1
         EndWhile
         ShowLootContainersSubMenu.OpenMenu()
@@ -84,24 +84,31 @@ EndFunction
 
 Function ShowLootNPCSubMenu()
     UIListMenu ShowLootNPCSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
-    ObjectReference[] LootNPCArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 43, 700.0)
-    If LootNPCArray.Length > 0
-        Int LootNPCIndex = 0
-        While LootNPCIndex < LootNPCArray.Length
-            String ContainerName = (LootNPCArray[LootNPCIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(LootNPCArray[LootNPCIndex]) As Int)) 
-            If LootNPCArray[LootNPCIndex].GetNumItems() == 0
-                ContainerName = "(Empty) " + ContainerName
-            EndIf
-            Actor CurrentNPC = LootNPCArray[LootNPCIndex] As Actor
+    ObjectReference[] TotalNPCArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 43, 700.0)
+    If TotalNPCArray.Length > 0
+        Int TotalNPCIndex = 0
+        Int DeadNPCIndex = 0
+        ObjectReference[] DeadNPCArray = new ObjectReference[128]
+        While TotalNPCIndex < TotalNPCArray.Length
+            Actor CurrentNPC = TotalNPCArray[TotalNPCIndex] As Actor
             If CurrentNPC.IsDead()
-                ShowLootNPCSubMenu.AddEntryItem(ContainerName)
+                DeadNPCArray[DeadNPCIndex] = TotalNPCArray[TotalNPCIndex]
+                DeadNPCIndex += 1
             EndIf
-            LootNPCIndex += 1
+            TotalNPCIndex += 1
+        EndWhile
+        While DeadNPCIndex < DeadNPCArray.Length
+            String Name = (DeadNPCArray[DeadNPCIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(DeadNPCArray[DeadNPCIndex]) As Int)) 
+            If DeadNPCArray[DeadNPCIndex].GetNumItems() == 0
+                Name = "(Empty) " + Name
+            EndIf
+            ShowLootNPCSubMenu.AddEntryItem(Name)
+            DeadNPCIndex += 1
         EndWhile
         ShowLootNPCSubMenu.OpenMenu()
         Int Selection = ShowLootNPCSubMenu.GetResultInt()
         If Selection >= 0
-            LootNPCArray[Selection].Activate(Game.GetPlayer())
+            DeadNPCArray[Selection].Activate(Game.GetPlayer())
         EndIf
     EndIf
 EndFunction
@@ -109,21 +116,28 @@ EndFunction
 Function ShowTalkToNPCSubMenu()
     ;ToDo write if NPC is hostile.
     UIListMenu ShowTalkToNPCSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
-    ObjectReference[] TalkToNPCArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 43, 700.0)
-    If TalkToNPCArray.Length > 0
-        Int TalkToNPCIndex = 0
-        While TalkToNPCIndex < TalkToNPCArray.Length
-            String ContainerName = (TalkToNPCArray[TalkToNPCIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(TalkToNPCArray[TalkToNPCIndex]) As Int))
-            Actor CurrentNPC = TalkToNPCArray[TalkToNPCIndex] As Actor
+    ObjectReference[] TotalNPCArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 43, 700.0)
+    If TotalNPCArray.Length > 0
+        Int TotalNPCIndex = 0
+        Int AliveNPCIndex = 0
+        ObjectReference[] AliveNPCArray = new ObjectReference[128]
+        While TotalNPCIndex < TotalNPCArray.Length
+            Actor CurrentNPC = TotalNPCArray[TotalNPCIndex] As Actor
             If !CurrentNPC.IsDead()
-                ShowTalkToNPCSubMenu.AddEntryItem(ContainerName)
+                AliveNPCArray[AliveNPCIndex] = TotalNPCArray[TotalNPCIndex]
+                AliveNPCIndex += 1
             EndIf
-            TalkToNPCIndex += 1
+            TotalNPCIndex += 1
+        EndWhile
+        While AliveNPCIndex < AliveNPCArray.Length
+            String Name = (AliveNPCArray[AliveNPCIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(AliveNPCArray[AliveNPCIndex]) As Int))
+            ShowTalkToNPCSubMenu.AddEntryItem(Name)
+            AliveNPCIndex += 1
         EndWhile
         ShowTalkToNPCSubMenu.OpenMenu()
         Int Selection = ShowTalkToNPCSubMenu.GetResultInt()
         If Selection >= 0
-            TalkToNPCArray[Selection].Activate(Game.GetPlayer())
+            AliveNPCArray[Selection].Activate(Game.GetPlayer())
         EndIf
     EndIf
 EndFunction
@@ -134,11 +148,11 @@ Function ShowOpenCloseDoorSubMenu()
     If OpenCloseDoorArray.Length > 0
         Int OpenCloseDoorIndex = 0
         While OpenCloseDoorIndex < OpenCloseDoorArray.Length
-            String ContainerName = (OpenCloseDoorArray[OpenCloseDoorIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(OpenCloseDoorArray[OpenCloseDoorIndex]) As Int)) 
+            String Name = (OpenCloseDoorArray[OpenCloseDoorIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(OpenCloseDoorArray[OpenCloseDoorIndex]) As Int)) 
             If OpenCloseDoorArray[OpenCloseDoorIndex].IsLocked() == 1
-                ContainerName = "(Locked) " + ContainerName
+                Name = "(Locked) " + Name
             EndIf
-            ShowOpenCloseDoorSubMenu.AddEntryItem(ContainerName)
+            ShowOpenCloseDoorSubMenu.AddEntryItem(Name)
             OpenCloseDoorIndex += 1
         EndWhile
         ShowOpenCloseDoorSubMenu.OpenMenu()
