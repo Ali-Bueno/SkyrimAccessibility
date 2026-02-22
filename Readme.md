@@ -4,7 +4,7 @@
 2. Install [ModOrganizer2](https://github.com/ModOrganizer2/modorganizer/releases);
 3. Launch Skyrim Launcher from within MO2;
 4. Download and Install Requirements with MO2;
-5. Install [The Skyrim Accessibility Mod](https://codeberg.org/DioKyrie/TheSkyrimAccessibilityMod/archive/main.zip) with MO2;
+5. Install latest release of [The Skyrim Accessibility Mod](https://codeberg.org/DioKyrie/TheSkyrimAccessibilityMod/releases) with MO2;
 6. Launch SKSE from within MO2.
 
 ## Requirements:
@@ -47,14 +47,14 @@ Wait for it to install.
 Launch Mod Organizer.  
 Create a new Instance.  
 Select Create Portable Instance.  
-Select a game to manage.
+Select a game to manage.  
 During Configure your profile settings check to use profile specific ini files and save files.  
 
 ## How to use Mod Organizer 2
 Launch Mod Organizer 2.  
 Launch the game at least once.  
 Open web browser.  
-Download SKSE and install it manually by extracting contents of archive into game folder where .exe files are.
+Download SKSE and install it manually by extracting contents of archive into game folder where .exe files are.  
 Download the rest of mods from Nexus Mods using the "Install via Mod Manager" button.  
 Download The Skyrim Accessibility Mod.  
 Go back to Mod Organizer.  
