@@ -91,19 +91,20 @@ Function ShowLootNPCSubMenu()
         ObjectReference[] DeadNPCArray = new ObjectReference[128]
         While TotalNPCIndex < TotalNPCArray.Length
             Actor CurrentNPC = TotalNPCArray[TotalNPCIndex] As Actor
-            If CurrentNPC.IsDead()
+            If CurrentNPC.IsDead() && (DeadNPCIndex < DeadNPCArray.Length)
                 DeadNPCArray[DeadNPCIndex] = TotalNPCArray[TotalNPCIndex]
                 DeadNPCIndex += 1
             EndIf
             TotalNPCIndex += 1
         EndWhile
-        While DeadNPCIndex < DeadNPCArray.Length
-            String Name = (DeadNPCArray[DeadNPCIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(DeadNPCArray[DeadNPCIndex]) As Int)) 
-            If DeadNPCArray[DeadNPCIndex].GetNumItems() == 0
+        Int MenuEntryIndex = 0
+        While MenuEntryIndex < DeadNPCIndex
+            String Name = (DeadNPCArray[MenuEntryIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(DeadNPCArray[MenuEntryIndex]) As Int)) 
+            If DeadNPCArray[MenuEntryIndex].GetNumItems() == 0
                 Name = "(Empty) " + Name
             EndIf
             ShowLootNPCSubMenu.AddEntryItem(Name)
-            DeadNPCIndex += 1
+            MenuEntryIndex += 1
         EndWhile
         ShowLootNPCSubMenu.OpenMenu()
         Int Selection = ShowLootNPCSubMenu.GetResultInt()
@@ -123,16 +124,17 @@ Function ShowTalkToNPCSubMenu()
         ObjectReference[] AliveNPCArray = new ObjectReference[128]
         While TotalNPCIndex < TotalNPCArray.Length
             Actor CurrentNPC = TotalNPCArray[TotalNPCIndex] As Actor
-            If !CurrentNPC.IsDead()
+            If !CurrentNPC.IsDead() && (AliveNPCIndex < AliveNPCArray.Length)
                 AliveNPCArray[AliveNPCIndex] = TotalNPCArray[TotalNPCIndex]
                 AliveNPCIndex += 1
             EndIf
             TotalNPCIndex += 1
         EndWhile
-        While AliveNPCIndex < AliveNPCArray.Length
-            String Name = (AliveNPCArray[AliveNPCIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(AliveNPCArray[AliveNPCIndex]) As Int))
+        Int MenuEntryIndex = 0
+        While MenuEntryIndex < AliveNPCIndex
+            String Name = (AliveNPCArray[MenuEntryIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(AliveNPCArray[MenuEntryIndex]) As Int))
             ShowTalkToNPCSubMenu.AddEntryItem(Name)
-            AliveNPCIndex += 1
+            MenuEntryIndex += 1
         EndWhile
         ShowTalkToNPCSubMenu.OpenMenu()
         Int Selection = ShowTalkToNPCSubMenu.GetResultInt()
