@@ -117,7 +117,6 @@ Function ShowLootNPCSubMenu()
 EndFunction
 
 Function ShowTalkToNPCSubMenu()
-    ;ToDo write if NPC is hostile.
     UIListMenu ShowTalkToNPCSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
     ObjectReference[] TotalNPCArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 43, 700.0)
     If TotalNPCArray.Length > 0
@@ -135,6 +134,10 @@ Function ShowTalkToNPCSubMenu()
         Int MenuEntryIndex = 0
         While MenuEntryIndex < AliveNPCIndex
             String Name = (AliveNPCArray[MenuEntryIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(AliveNPCArray[MenuEntryIndex]) As Int))
+            Actor CurrentNPC = AliveNPCArray[MenuEntryIndex] As Actor
+            If CurrentNPC.IsHostileToActor(Game.GetPlayer())
+                Name = "(Hostile) " + Name
+            EndIf
             ShowTalkToNPCSubMenu.AddEntryItem(Name)
             MenuEntryIndex += 1
         EndWhile
