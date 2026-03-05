@@ -35,7 +35,7 @@
 - L Key - Debug Menu. Write Coordinates and Make ScreenShot.
 
 ## What is not Included
-- TTS is not proposed by this Mod
+- TTS is not proposed by this Mod. Use [SkyrimTTS](https://github.com/DioKyrie-Git/SkyrimTTS)
 
 ## How to Install Mod Organizer 2
 Launch Mod Organizer 2 Installer.  
