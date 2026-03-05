@@ -1,5 +1,7 @@
 Scriptname AccessibilityScriptAMBClairvoyance extends ReferenceAlias
 
+;ToDo Lost Knife Cave No Direct Path Seen
+
 Spell Property AccessibilityClairvoyance Auto
 Bool Property IsAutoCastEnabled Auto
 
