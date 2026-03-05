@@ -4,7 +4,7 @@
 2. Install [ModOrganizer2](https://github.com/ModOrganizer2/modorganizer/releases);
 3. Launch Skyrim Launcher from within MO2;
 4. Download and Install Requirements with MO2;
-5. Install latest release of [The Skyrim Accessibility Mod](https://codeberg.org/DioKyrie/TheSkyrimAccessibilityMod/releases) with MO2;
+5. Install latest release of [The Skyrim Accessibility Mod](https://github.com/DioKyrie-Git/SkyrimAccessibility/releases) with MO2;
 6. Launch SKSE from within MO2.
 
 ## Requirements:
