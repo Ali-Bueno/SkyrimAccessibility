@@ -6,3 +6,10 @@
 3. No AI generated code is allowed. Use of AI during testing and learing is good, but if you hope to submit code created in several minutes and tested not even once, your pull requests will not be accepted.
 
 # Contributing Guide
+## Install Tools
+- Creation Kit
+- Creation Kit Platform Extended
+- BSA Browser
+- Papyrus Compiler App SSE
+- SSEEdit
+- Champollion GUI
