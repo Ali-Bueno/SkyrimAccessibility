@@ -1,4 +1,4 @@
-# The Skyrim Accessibility Mod By Dio Kyrie
+# Skyrim Accessibility Mod By Dio Kyrie
 ## Install Guide
 1. Install [Skyrim Special Edition](https://store.steampowered.com/app/489830/The_Elder_Scrolls_V_Skyrim_Special_Edition/);
 2. Install [ModOrganizer2](https://github.com/ModOrganizer2/modorganizer/releases);
@@ -79,5 +79,5 @@ Use the Run button to play the game.
 
 
 ## Licenses Notice
-Files of SkyrimAccessibility are licensed under different licenses.
+Files of Skyrim Accessibility Mod By Dio Kyrie are licensed under different licenses.
 You can learn more in License.md

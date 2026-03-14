@@ -5,7 +5,7 @@ accessibility.esp and Data/Scripts/ license.
 >
 > This License covers Data/accessibility.esp and all files inside of Data/Scripts/ directory.
 >
-> These files are part of mod that is the intellectual property of Dio Kyrie.
+> These files are part of game modification that is the intellectual property of Dio Kyrie.
 > These files are provided freely and may be distributed unmodified in accordance with the Creation Kit EULA.
 >
 > YOU ARE EXPLICITLY FORBIDDEN FROM:
@@ -21,7 +21,7 @@ accessibility.esp and Data/Scripts/ license.
 ----------------------------
 Data/Sounds license.
 ----------------------------
-> All sounds provided by this mod are licensed under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) license.
+> All sounds included with Skyrim Accessibility Mod By Dio Kyrie are licensed under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) license.
 ----------------------------
 SKSE Plugin license
 ----------------------------
