@@ -55,7 +55,21 @@ Function ShowActivateMenu()
 EndFunction
 
 Function ShowTakeItemSubMenu()
-
+    UIListMenu ShowTakeItemSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 32, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            ShowTakeItemSubMenu.AddEntryItem(Name)
+            Index += 1
+        EndWhile
+        ShowTakeItemSubMenu.OpenMenu()
+        Int Selection = ShowTakeItemSubMenu.GetResultInt()
+        If Selection >= 0
+            Array[Selection].Activate(Game.GetPlayer())
+        EndIf
+    EndIf
 EndFunction
 
 Function ShowLootContainersSubMenu()
@@ -177,3 +191,6 @@ EndFunction
 Function ShowMiscActivatorsSubMenu()
 
 EndFunction
+
+
+

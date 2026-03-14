@@ -17,9 +17,6 @@
 - K Key - None
 - L Key - Debug Menu. Write Coordinates and Make ScreenShot.
 
-## What is not Included
-- TTS is not proposed by this Mod. Use [SkyrimTTS](https://github.com/DioKyrie-Git/SkyrimTTS)
-
 ## Install Guide
 1. Install [Skyrim Special Edition](https://store.steampowered.com/app/489830/The_Elder_Scrolls_V_Skyrim_Special_Edition/);
 2. Install [Mod Manager](https://github.com/DioKyrie-Git/SkyrimAccessibility/blob/main/ModManagersGuides.md);
