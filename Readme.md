@@ -76,3 +76,8 @@ Use Tab until you reach the tree view with plugins.
 Press Shift+F10 and select "Enable All".  
 Use Tab until you reach the combo box to select a program to run, select "SKSE".  
 Use the Run button to play the game.  
+
+
+## Licenses Notice
+Files of SkyrimAccessibility are licensed under different licenses.
+You can learn more in License.md
