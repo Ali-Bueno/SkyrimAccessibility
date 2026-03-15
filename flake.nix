@@ -15,16 +15,13 @@
         };
       in
       {
-        packages.default = pkgs.stdenv.mkDerivation {
+        packages.default = pkgs.clangStdenv.mkDerivation {
           name = "SkyrimAccessibility";
           version = "0.8.0";
           # Local source code (no external files needed)
           src = ./.;
           buildPhase = ''
-            xmake f -p mingw --arch=x86_64 --toolchain=clang-cl --sdk="$(which clang-cl)" --ldflags="-fuse-ld=lld"
-            xmake build
-          '';
-          installPhase = ''
+          xmake build
           '';
           nativeBuildInputs = with pkgs; [
           xmake # Build tool.
@@ -45,3 +42,7 @@
         };
       });
 }
+
+            #xmake f -p windows --arch=x86_64 --toolchain=clang-cl --sdk="$(which clang-cl)" --ldflags="-fuse-ld=lld"
+            #xmake build
+# nix build -f flake.nix
