@@ -5,44 +5,38 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
-
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          system = system;
+          config.allowUnfree = true;
+          config.microsoftVisualStudioLicenseAccepted = true;
+        };
       in
       {
-        # The package built with mkDerivation
         packages.default = pkgs.stdenv.mkDerivation {
-          name = "hello-from-flake";
-          version = "0.1.0";
-
-          # Inline the source code (no external files needed)
-          #src =
-
+          name = "SkyrimAccessibility";
+          version = "0.8.0";
+          # Local source code (no external files needed)
+          src = ./.;
           buildPhase = ''
+            xmake f -p mingw --arch=x86_64 --toolchain=clang-cl --sdk="$(which clang-cl)" --ldflags="-fuse-ld=lld"
             xmake build
           '';
-
           installPhase = ''
-            mkdir -p $out/bin
-            cp hello $out/bin/
           '';
-
-          # Build dependencies
-          nativeBuildInputs = with pkgs; [ xmake git];
+          nativeBuildInputs = with pkgs; [
+          xmake # Build tool.
+          windows.sdk #Provides mvsc sdk and windows crt for cross compiling.
+          llvmPackages.clang-unwrapped
+          llvmPackages.bintools-unwrapped
+          ];
         };
-
         # Development shell with tools for hacking on the package
         # Enter with `nix develop`
         devShells.default = pkgs.mkShell {
           inputsFrom = [ self.packages.${system}.default ];
-
-          # Additional development tools
-          packages = with pkgs; [
-
-          ];
-
           shellHook = ''
             export PS1="$PS1[nix develop]:"
             echo "Welcome to the dev shell."
