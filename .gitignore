@@ -1,3 +1,5 @@
 .xmake/
+.papyrus/
 build/
 Data/Sounds
+
