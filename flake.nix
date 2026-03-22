@@ -16,25 +16,30 @@
         };
       in
       {
-        packages.default = pkgs.clangStdenv.mkDerivation {
+        packages.default = pkgs.stdenv.mkDerivation {
           pname = "SkyrimAccessibility";
           version = "0.8.0";
-          # Local source code (no external files needed)
-          src = ./.;
+          # Sources
+          src = (./.);
+          sourceRoot = "pname"; # Build starts in parent directory of all source directories.
           buildPhase = ''
-
+            xmake build
           '';
           nativeBuildInputs = with pkgs; [
           git
-          #steamcmd
           papyrus-compiler.packages.${system}.default
 
 
 
           xmake # Build tool.
-          windows.sdk #Provides mvsc sdk and windows crt for cross compiling.
-          llvmPackages.clang-unwrapped
-          llvmPackages.bintools-unwrapped
+          # msvc-wine
+          #wine64
+          #python315
+          #msitools
+
+
+          #llvmPackages.clang-unwrapped
+          #llvmPackages.bintools-unwrapped
           ];
         };
         # Development shell with tools for hacking on the package
@@ -50,11 +55,10 @@
       });
 }
 
-            #xmake f -p windows --arch=x86_64 --toolchain=clang-cl --sdk="$(which clang-cl)" --ldflags="-fuse-ld=lld"
+            #xmake f -p windows --arch=x86_64 --toolchain=clang-cl --sdk="$(which clang-cl)" --cc="$(which clang-cl)" --cxx="$(which clang-cl)" --ldflags="-fuse-ld=lld"
             #xmake build
 # nix build -f flake.nix
 
 
 # Use command bellow to compile .psc files. Update to include 2 outpus and multiple header folders.
 # papyrus-compiler compile -h "/home/cubozoa/Games/Skyrim Special Edition/Data/Scripts/Source/" -i ./Data/Scripts/Source/ -o ./Data/Scripts/
-# Use command bellow to place compiled files in Game Folder.

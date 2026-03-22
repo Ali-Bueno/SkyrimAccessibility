@@ -25,7 +25,7 @@ Function WalkInPlace()
     Int LeftwardKey = Input.GetMappedKey("Strafe Left")
     Int RightwardKey = Input.GetMappedKey("Strafe Right")
     If (Input.IsKeyPressed(ForwardKey) || Input.IsKeyPressed(BackwardKey) || Input.IsKeyPressed(LeftwardKey) || Input.IsKeyPressed(RightwardKey))
-        If (FormerPosition.GetDistance(Game.GetPlayer()) < 45) && !Utility.IsInMenuMode()
+        If ((FormerPosition.GetDistance(Game.GetPlayer()) < 45) && !Utility.IsInMenuMode())
             AccessibilityCNDWalkInPlace.Play(Game.GetPlayer())
         EndIf
     EndIf

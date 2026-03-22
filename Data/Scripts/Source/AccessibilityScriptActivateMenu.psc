@@ -8,23 +8,16 @@ Scriptname AccessibilityScriptActivateMenu extends ReferenceAlias
 ;ToDo Add sound for when not enough lockpicks Papyrus
 ;ToDo Change the lockpick ammount need and exp gain dynamicaly based on lock level instead of hardcoding every time. c++
 
-;Tell if door leads to other location c++
+;Tell if door leads to other location c++. In Papyrus can I use static DoorMarker? check if near door.
 
 Import UIExtensions
 Import UIListMenu
-
 
 Sound Property AccessibilityCNDLockPickFail Auto
 Sound Property AccessibilityCNDLockPickSuccess Auto
 
 MiscObject Property Lockpick Auto
 MiscObject Property SkeletonKey Auto
-
-Perk Property NoviceLocks00 Auto
-Perk Property ApprenticeLocks25 Auto
-Perk Property AdeptLocks50 Auto
-Perk Property ExpertLocks75 Auto
-Perk Property MasterLocks100 Auto
 
 Event OnInit()
     Debug.Notification("Accessibility Activate Menu Loaded")
@@ -128,100 +121,100 @@ Function ShowTakeItemSubMenu()
 
     ; AmmoArray
     If AmmoArray.Length > 0
-    Int AmmoIndex = 0
-    While AmmoIndex < AmmoArray.Length
-    String Name = (AmmoArray[AmmoIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(AmmoArray[AmmoIndex]) As Int))
-    If AmmoArray[AmmoIndex].IsOffLimits()
-    Name = "(Steal) " + Name
-    EndIf
-    ShowTakeItemSubMenu.AddEntryItem(Name)
-    AmmoIndex += 1
-    EndWhile
-    TotalItems += AmmoArray.Length
+        Int AmmoIndex = 0
+        While AmmoIndex < AmmoArray.Length
+            String Name = (AmmoArray[AmmoIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(AmmoArray[AmmoIndex]) As Int))
+            If AmmoArray[AmmoIndex].IsOffLimits()
+                Name = "(Steal) " + Name
+            EndIf
+            ShowTakeItemSubMenu.AddEntryItem(Name)
+            AmmoIndex += 1
+        EndWhile
+        TotalItems += AmmoArray.Length
     EndIf
 
     ; ArmorsArray
     If ArmorsArray.Length > 0
-    Int ArmorsIndex = 0
-    While ArmorsIndex < ArmorsArray.Length
-    String Name = (ArmorsArray[ArmorsIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(ArmorsArray[ArmorsIndex]) As Int))
-    If ArmorsArray[ArmorsIndex].IsOffLimits()
-    Name = "(Steal) " + Name
-    EndIf
-    ShowTakeItemSubMenu.AddEntryItem(Name)
-    ArmorsIndex += 1
-    EndWhile
-    TotalItems += ArmorsArray.Length
+        Int ArmorsIndex = 0
+        While ArmorsIndex < ArmorsArray.Length
+            String Name = (ArmorsArray[ArmorsIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(ArmorsArray[ArmorsIndex]) As Int))
+            If ArmorsArray[ArmorsIndex].IsOffLimits()
+                Name = "(Steal) " + Name
+            EndIf
+            ShowTakeItemSubMenu.AddEntryItem(Name)
+            ArmorsIndex += 1
+        EndWhile
+        TotalItems += ArmorsArray.Length
     EndIf
 
     ; BooksArray
     If BooksArray.Length > 0
-    Int BooksIndex = 0
-    While BooksIndex < BooksArray.Length
-    String Name = (BooksArray[BooksIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(BooksArray[BooksIndex]) As Int))
-    If BooksArray[BooksIndex].IsOffLimits()
-    Name = "(Steal) " + Name
-    EndIf
-    ShowTakeItemSubMenu.AddEntryItem(Name)
-    BooksIndex += 1
-    EndWhile
-    TotalItems += BooksArray.Length
+        Int BooksIndex = 0
+        While BooksIndex < BooksArray.Length
+            String Name = (BooksArray[BooksIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(BooksArray[BooksIndex]) As Int))
+            If BooksArray[BooksIndex].IsOffLimits()
+                Name = "(Steal) " + Name
+            EndIf
+            ShowTakeItemSubMenu.AddEntryItem(Name)
+            BooksIndex += 1
+        EndWhile
+        TotalItems += BooksArray.Length
     EndIf
 
     ; KeysArray
     If KeysArray.Length > 0
-    Int KeysIndex = 0
-    While KeysIndex < KeysArray.Length
-    String Name = (KeysArray[KeysIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(KeysArray[KeysIndex]) As Int))
-    If KeysArray[KeysIndex].IsOffLimits()
-    Name = "(Steal) " + Name
-    EndIf
-    ShowTakeItemSubMenu.AddEntryItem(Name)
-    KeysIndex += 1
-    EndWhile
-    TotalItems += KeysArray.Length
+        Int KeysIndex = 0
+        While KeysIndex < KeysArray.Length
+            String Name = (KeysArray[KeysIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(KeysArray[KeysIndex]) As Int))
+            If KeysArray[KeysIndex].IsOffLimits()
+                Name = "(Steal) " + Name
+            EndIf
+            ShowTakeItemSubMenu.AddEntryItem(Name)
+            KeysIndex += 1
+        EndWhile
+        TotalItems += KeysArray.Length
     EndIf
 
     ; SoulGemsArray
     If SoulGemsArray.Length > 0
     Int SoulGemsIndex = 0
-    While SoulGemsIndex < SoulGemsArray.Length
-    String Name = (SoulGemsArray[SoulGemsIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(SoulGemsArray[SoulGemsIndex]) As Int))
-    If SoulGemsArray[SoulGemsIndex].IsOffLimits()
-    Name = "(Steal) " + Name
-    EndIf
-    ShowTakeItemSubMenu.AddEntryItem(Name)
-    SoulGemsIndex += 1
-    EndWhile
-    TotalItems += SoulGemsArray.Length
+        While SoulGemsIndex < SoulGemsArray.Length
+            String Name = (SoulGemsArray[SoulGemsIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(SoulGemsArray[SoulGemsIndex]) As Int))
+            If SoulGemsArray[SoulGemsIndex].IsOffLimits()
+                Name = "(Steal) " + Name
+            EndIf
+            ShowTakeItemSubMenu.AddEntryItem(Name)
+            SoulGemsIndex += 1
+        EndWhile
+        TotalItems += SoulGemsArray.Length
     EndIf
 
     ; IngredientsArray
     If IngredientsArray.Length > 0
-    Int IngredientsIndex = 0
-    While IngredientsIndex < IngredientsArray.Length
-    String Name = (IngredientsArray[IngredientsIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(IngredientsArray[IngredientsIndex]) As Int))
-    If IngredientsArray[IngredientsIndex].IsOffLimits()
-    Name = "(Steal) " + Name
-    EndIf
-    ShowTakeItemSubMenu.AddEntryItem(Name)
-    IngredientsIndex += 1
-    EndWhile
-    TotalItems += IngredientsArray.Length
+        Int IngredientsIndex = 0
+        While IngredientsIndex < IngredientsArray.Length
+            String Name = (IngredientsArray[IngredientsIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(IngredientsArray[IngredientsIndex]) As Int))
+            If IngredientsArray[IngredientsIndex].IsOffLimits()
+                Name = "(Steal) " + Name
+            EndIf
+            ShowTakeItemSubMenu.AddEntryItem(Name)
+            IngredientsIndex += 1
+        EndWhile
+        TotalItems += IngredientsArray.Length
     EndIf
 
     ; ScrollsArray
     If ScrollsArray.Length > 0
-    Int ScrollsIndex = 0
-    While ScrollsIndex < ScrollsArray.Length
-    String Name = (ScrollsArray[ScrollsIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(ScrollsArray[ScrollsIndex]) As Int))
-    If ScrollsArray[ScrollsIndex].IsOffLimits()
-    Name = "(Steal) " + Name
-    EndIf
-    ShowTakeItemSubMenu.AddEntryItem(Name)
-    ScrollsIndex += 1
-    EndWhile
-    TotalItems += ScrollsArray.Length
+        Int ScrollsIndex = 0
+        While ScrollsIndex < ScrollsArray.Length
+            String Name = (ScrollsArray[ScrollsIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(ScrollsArray[ScrollsIndex]) As Int))
+            If ScrollsArray[ScrollsIndex].IsOffLimits()
+                Name = "(Steal) " + Name
+            EndIf
+            ShowTakeItemSubMenu.AddEntryItem(Name)
+            ScrollsIndex += 1
+        EndWhile
+        TotalItems += ScrollsArray.Length
     EndIf
 
     ; MiscArray
@@ -313,145 +306,78 @@ Function ShowLootContainersSubMenu()
                     (ContainerArray[Selection].Lock(false))
                     (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                 Else
-                    If (ContainerArray[Selection].GetLockLevel() >= 0 && ContainerArray[Selection].GetLockLevel() <= 1)
-                        If (Game.GetPlayer().HasPerk(NoviceLocks00))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
-                                (ContainerArray[Selection].Lock(false))
-                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                (Game.GetPlayer().RemoveItem(Lockpick, 1))
-                                (Game.AdvanceSkill("Lockpicking", 1.0))
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        ElseIf (!Game.GetPlayer().HasPerk(NoviceLocks00))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 5)
-                                If (Utility.RandomInt(0, 1) == 0)
-                                    (ContainerArray[Selection].Lock(false))
-                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 5))
-                                    (Game.AdvanceSkill("Lockpicking", 3.0))
-                                Else
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 5))
-                                    (Game.AdvanceSkill("Lockpicking", 2.0))
-                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
-                                EndIf
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
+                    If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
+                        If (Utility.RandomInt(0, 3) == 0)
+                            (ContainerArray[Selection].Lock(false))
+                            (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
+                            (Game.GetPlayer().RemoveItem(Lockpick, 1))
+                            (Game.AdvanceSkill("Lockpicking", 2.0))
+                        Else
+                            (Game.GetPlayer().RemoveItem(Lockpick, 1))
+                            (Game.AdvanceSkill("Lockpicking", 1.0))
+                            (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
                         EndIf
-                    EndIf
-                    If (ContainerArray[Selection].GetLockLevel() >= 2 && ContainerArray[Selection].GetLockLevel() <= 25)
-                        If (Game.GetPlayer().HasPerk(ApprenticeLocks25))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
-                                (ContainerArray[Selection].Lock(false))
-                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                (Game.GetPlayer().RemoveItem(Lockpick, 1))
-                                (Game.AdvanceSkill("Lockpicking", 1.0))
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        ElseIf (!Game.GetPlayer().HasPerk(ApprenticeLocks25))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 10)
-                                If (Utility.RandomInt(0, 1) == 0)
-                                    (ContainerArray[Selection].Lock(false))
-                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 10))
-                                    (Game.AdvanceSkill("Lockpicking", 7.0))
-                                Else
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 10))
-                                    (Game.AdvanceSkill("Lockpicking", 4.0))
-                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
-                                EndIf
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        EndIf
-                    EndIf
-                    If (ContainerArray[Selection].GetLockLevel() >= 26 && ContainerArray[Selection].GetLockLevel() <= 50)
-                        If (Game.GetPlayer().HasPerk(AdeptLocks50))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
-                                (ContainerArray[Selection].Lock(false))
-                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                (Game.GetPlayer().RemoveItem(Lockpick, 1))
-                                (Game.AdvanceSkill("Lockpicking", 1.0))
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        ElseIf (!Game.GetPlayer().HasPerk(AdeptLocks50))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 15)
-                                If (Utility.RandomInt(0, 1) == 0)
-                                    (ContainerArray[Selection].Lock(false))
-                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 15))
-                                    (Game.AdvanceSkill("Lockpicking", 11.0))
-                                Else
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 15))
-                                    (Game.AdvanceSkill("Lockpicking", 8.0))
-                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
-                                EndIf
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        EndIf
-                    EndIf
-                    If (ContainerArray[Selection].GetLockLevel() >= 51 && ContainerArray[Selection].GetLockLevel() <= 75)
-                        If (Game.GetPlayer().HasPerk(ExpertLocks75))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
-                                (ContainerArray[Selection].Lock(false))
-                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                (Game.GetPlayer().RemoveItem(Lockpick, 1))
-                                (Game.AdvanceSkill("Lockpicking", 1.0))
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        ElseIf (!Game.GetPlayer().HasPerk(ExpertLocks75))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 20)
-                                If (Utility.RandomInt(0, 1) == 0)
-                                    (ContainerArray[Selection].Lock(false))
-                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 20))
-                                    (Game.AdvanceSkill("Lockpicking", 15.0))
-                                Else
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 20))
-                                    (Game.AdvanceSkill("Lockpicking", 12.0))
-                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
-                                EndIf
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        EndIf
-                    EndIf
-                    If (ContainerArray[Selection].GetLockLevel() >= 76 && ContainerArray[Selection].GetLockLevel() <= 254)
-                        If (Game.GetPlayer().HasPerk(MasterLocks100))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
-                                (ContainerArray[Selection].Lock(false))
-                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                (Game.GetPlayer().RemoveItem(Lockpick, 1))
-                                (Game.AdvanceSkill("Lockpicking", 1.0))
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        ElseIf (!Game.GetPlayer().HasPerk(MasterLocks100))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 25)
-                                If (Utility.RandomInt(0, 1) == 0)
-                                    (ContainerArray[Selection].Lock(false))
-                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 25))
-                                    (Game.AdvanceSkill("Lockpicking", 20.0))
-                                Else
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 25))
-                                    (Game.AdvanceSkill("Lockpicking", 15.0))
-                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
-                                EndIf
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        EndIf
+                    Else
+                        Debug.Notification("Not enough Lockpicks")
                     EndIf
                 EndIf
             EndIf
-        ElseIf Selection >= 0 && ContainerArray[Selection].IsLocked() == 1 && ContainerArray[Selection].GetLockLevel() == 255
+        ElseIf (Selection >= 0 && ContainerArray[Selection].IsLocked() == 1 && ContainerArray[Selection].GetLockLevel() == 255)
             ContainerArray[Selection].Activate(Game.GetPlayer())
+        EndIf
+    EndIf
+EndFunction
+
+Function ShowOpenCloseDoorSubMenu()
+    UIListMenu ShowOpenCloseDoorSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    UIListMenu ShowLockpickMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] OpenCloseDoorArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 29, 700.0)
+    If OpenCloseDoorArray.Length > 0
+        Int OpenCloseDoorIndex = 0
+        While OpenCloseDoorIndex < OpenCloseDoorArray.Length
+            String Name = (OpenCloseDoorArray[OpenCloseDoorIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(OpenCloseDoorArray[OpenCloseDoorIndex]) As Int))
+            If OpenCloseDoorArray[OpenCloseDoorIndex].IsLocked() == 1
+                If !OpenCloseDoorArray[OpenCloseDoorIndex].GetLockLevel() == 255
+                    Name = "(Locked) " + Name
+                ElseIf OpenCloseDoorArray[OpenCloseDoorIndex].GetLockLevel() == 255
+                    Name = "(Key Required) " + Name
+                EndIf
+            EndIf
+            ShowOpenCloseDoorSubMenu.AddEntryItem(Name)
+            OpenCloseDoorIndex += 1
+        EndWhile
+        ShowOpenCloseDoorSubMenu.OpenMenu()
+        Int Selection = ShowOpenCloseDoorSubMenu.GetResultInt()
+        If (Selection >= 0 && OpenCloseDoorArray[Selection].IsLocked() == 0)
+            OpenCloseDoorArray[Selection].Activate(Game.GetPlayer())
+        ElseIf (Selection >= 0 && OpenCloseDoorArray[Selection].IsLocked() == 1 && !OpenCloseDoorArray[Selection].GetLockLevel() == 255)
+            ShowLockpickMenu()
+            Int SelectionLockpickMode = ShowLockpickMenu.GetResultInt()
+            If SelectionLockpickMode == 0
+                OpenCloseDoorArray[Selection].Activate(Game.GetPlayer())
+            ElseIf SelectionLockpickMode == 1
+                If (Game.GetPlayer().GetItemCount(SkeletonKey) >= 1)
+                    (OpenCloseDoorArray[Selection].Lock(false))
+                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
+                Else
+                    If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
+                        If (Utility.RandomInt(0, 3) == 0)
+                            (OpenCloseDoorArray[Selection].Lock(false))
+                            (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
+                            (Game.GetPlayer().RemoveItem(Lockpick, 1))
+                            (Game.AdvanceSkill("Lockpicking", 2.0))
+                        Else
+                            (Game.GetPlayer().RemoveItem(Lockpick, 1))
+                            (Game.AdvanceSkill("Lockpicking", 1.0))
+                            (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
+                        EndIf
+                    Else
+                        Debug.Notification("Not enough Lockpicks")
+                    EndIf
+                EndIf
+            EndIf
+        ElseIf (Selection >= 0 && OpenCloseDoorArray[Selection].IsLocked() == 1 && OpenCloseDoorArray[Selection].GetLockLevel() == 255)
+            OpenCloseDoorArray[Selection].Activate(Game.GetPlayer())
         EndIf
     EndIf
 EndFunction
@@ -522,181 +448,6 @@ Function ShowTalkToNPCSubMenu()
         Int Selection = ShowTalkToNPCSubMenu.GetResultInt()
         If Selection >= 0
             AliveNPCArray[Selection].Activate(Game.GetPlayer())
-        EndIf
-    EndIf
-EndFunction
-
-Function ShowOpenCloseDoorSubMenu()
-    UIListMenu ShowOpenCloseDoorSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
-    UIListMenu ShowLockpickMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
-    ObjectReference[] OpenCloseDoorArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 29, 700.0)
-    If OpenCloseDoorArray.Length > 0
-        Int OpenCloseDoorIndex = 0
-        While OpenCloseDoorIndex < OpenCloseDoorArray.Length
-            String Name = (OpenCloseDoorArray[OpenCloseDoorIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(OpenCloseDoorArray[OpenCloseDoorIndex]) As Int))
-            If OpenCloseDoorArray[OpenCloseDoorIndex].IsLocked() == 1
-                If !OpenCloseDoorArray[OpenCloseDoorIndex].GetLockLevel() == 255
-                    Name = "(Locked) " + Name
-                ElseIf OpenCloseDoorArray[OpenCloseDoorIndex].GetLockLevel() == 255
-                    Name = "(Key Required) " + Name
-                EndIf
-            EndIf
-            ShowOpenCloseDoorSubMenu.AddEntryItem(Name)
-            OpenCloseDoorIndex += 1
-        EndWhile
-        ShowOpenCloseDoorSubMenu.OpenMenu()
-        Int Selection = ShowOpenCloseDoorSubMenu.GetResultInt()
-        If Selection >= 0 && OpenCloseDoorArray[Selection].IsLocked() == 0
-            OpenCloseDoorArray[Selection].Activate(Game.GetPlayer())
-        ElseIf Selection >= 0 && OpenCloseDoorArray[Selection].IsLocked() == 1 && !OpenCloseDoorArray[Selection].GetLockLevel() == 255
-            ShowLockpickMenu()
-            Int SelectionLockpickMode = ShowLockpickMenu.GetResultInt()
-            If SelectionLockpickMode == 0
-                OpenCloseDoorArray[Selection].Activate(Game.GetPlayer())
-            ElseIf SelectionLockpickMode == 1
-                If (Game.GetPlayer().GetItemCount(SkeletonKey) >= 1)
-                    (OpenCloseDoorArray[Selection].Lock(false))
-                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                Else
-                    If (OpenCloseDoorArray[Selection].GetLockLevel() >= 0 && OpenCloseDoorArray[Selection].GetLockLevel() <= 1)
-                        If (Game.GetPlayer().HasPerk(NoviceLocks00))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
-                                (OpenCloseDoorArray[Selection].Lock(false))
-                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                (Game.GetPlayer().RemoveItem(Lockpick, 1))
-                                (Game.AdvanceSkill("Lockpicking", 1.0))
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        ElseIf (!Game.GetPlayer().HasPerk(NoviceLocks00))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 5)
-                                If (Utility.RandomInt(0, 1) == 0)
-                                    (OpenCloseDoorArray[Selection].Lock(false))
-                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 5))
-                                    (Game.AdvanceSkill("Lockpicking", 3.0))
-                                Else
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 5))
-                                    (Game.AdvanceSkill("Lockpicking", 2.0))
-                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
-                                EndIf
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        EndIf
-                    EndIf
-                    If (OpenCloseDoorArray[Selection].GetLockLevel() >= 2 && OpenCloseDoorArray[Selection].GetLockLevel() <= 25)
-                        If (Game.GetPlayer().HasPerk(ApprenticeLocks25))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
-                                (OpenCloseDoorArray[Selection].Lock(false))
-                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                (Game.GetPlayer().RemoveItem(Lockpick, 1))
-                                (Game.AdvanceSkill("Lockpicking", 1.0))
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        ElseIf (!Game.GetPlayer().HasPerk(ApprenticeLocks25))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 10)
-                                If (Utility.RandomInt(0, 1) == 0)
-                                    (OpenCloseDoorArray[Selection].Lock(false))
-                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 10))
-                                    (Game.AdvanceSkill("Lockpicking", 7.0))
-                                Else
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 10))
-                                    (Game.AdvanceSkill("Lockpicking", 4.0))
-                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
-                                EndIf
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        EndIf
-                    EndIf
-                    If (OpenCloseDoorArray[Selection].GetLockLevel() >= 26 && OpenCloseDoorArray[Selection].GetLockLevel() <= 50)
-                        If (Game.GetPlayer().HasPerk(AdeptLocks50))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
-                                (OpenCloseDoorArray[Selection].Lock(false))
-                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                (Game.GetPlayer().RemoveItem(Lockpick, 1))
-                                (Game.AdvanceSkill("Lockpicking", 1.0))
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        ElseIf (!Game.GetPlayer().HasPerk(AdeptLocks50))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 15)
-                                If (Utility.RandomInt(0, 1) == 0)
-                                    (OpenCloseDoorArray[Selection].Lock(false))
-                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 15))
-                                    (Game.AdvanceSkill("Lockpicking", 11.0))
-                                Else
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 15))
-                                    (Game.AdvanceSkill("Lockpicking", 8.0))
-                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
-                                EndIf
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        EndIf
-                    EndIf
-                    If (OpenCloseDoorArray[Selection].GetLockLevel() >= 51 && OpenCloseDoorArray[Selection].GetLockLevel() <= 75)
-                        If (Game.GetPlayer().HasPerk(ExpertLocks75))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
-                                (OpenCloseDoorArray[Selection].Lock(false))
-                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                (Game.GetPlayer().RemoveItem(Lockpick, 1))
-                                (Game.AdvanceSkill("Lockpicking", 1.0))
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        ElseIf (!Game.GetPlayer().HasPerk(ExpertLocks75))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 20)
-                                If (Utility.RandomInt(0, 1) == 0)
-                                    (OpenCloseDoorArray[Selection].Lock(false))
-                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 20))
-                                    (Game.AdvanceSkill("Lockpicking", 15.0))
-                                Else
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 20))
-                                    (Game.AdvanceSkill("Lockpicking", 12.0))
-                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
-                                EndIf
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        EndIf
-                    EndIf
-                    If (OpenCloseDoorArray[Selection].GetLockLevel() >= 76 && OpenCloseDoorArray[Selection].GetLockLevel() <= 254)
-                        If (Game.GetPlayer().HasPerk(MasterLocks100))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
-                                (OpenCloseDoorArray[Selection].Lock(false))
-                                (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                (Game.GetPlayer().RemoveItem(Lockpick, 1))
-                                (Game.AdvanceSkill("Lockpicking", 1.0))
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        ElseIf (!Game.GetPlayer().HasPerk(MasterLocks100))
-                            If (Game.GetPlayer().GetItemCount(Lockpick) >= 25)
-                                If (Utility.RandomInt(0, 1) == 0)
-                                    (OpenCloseDoorArray[Selection].Lock(false))
-                                    (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 25))
-                                    (Game.AdvanceSkill("Lockpicking", 20.0))
-                                Else
-                                    (Game.GetPlayer().RemoveItem(Lockpick, 25))
-                                    (Game.AdvanceSkill("Lockpicking", 15.0))
-                                    (AccessibilityCNDLockPickFail.Play(Game.GetPlayer()))
-                                EndIf
-                            Else
-                                Debug.Notification("Not enough Lockpicks")
-                            EndIf
-                        EndIf
-                    EndIf
-                EndIf
-            EndIf
-        ElseIf Selection >= 0 && OpenCloseDoorArray[Selection].IsLocked() == 1 && OpenCloseDoorArray[Selection].GetLockLevel() == 255
-            OpenCloseDoorArray[Selection].Activate(Game.GetPlayer())
         EndIf
     EndIf
 EndFunction
