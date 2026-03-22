@@ -10,7 +10,7 @@ Fast Travel will list all discovered locations per Skyrim Hold. While Undiscover
 9. All ambiant sounds should be moved to a single script.
 10. Reduce volume of ambiant sounds.
 11. Expand Ambient sounds.
-12.
+12. Move QuestsMQ101 logic to manual activation in the debug menu. Quests sub category. This will prevent bug in players who updated mod and not started new game.
 
 
 Magnum Ultimus: Move Papyrus scripts to C++ SKSE plugin, with PrismaUI for Menus. With settings menu for everything like sound volume, etc.
