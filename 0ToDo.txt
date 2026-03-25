@@ -14,3 +14,5 @@ Fast Travel will list all discovered locations per Skyrim Hold. While Undiscover
 
 
 Magnum Ultimus: Move Papyrus scripts to C++ SKSE plugin, with PrismaUI for Menus. With settings menu for everything like sound volume, etc.
+
+- You can read introduction to Skyrim UI and Controls.
