@@ -21,9 +21,10 @@
 17. Launch Skyrim Launcher once and close it, to generate ini files.
 18. Open web browser.
 19. Download [SKSE](https://www.nexusmods.com/skyrimspecialedition/mods/30379?tab=files) and install it manually by extracting contents of archive into game folder where .exe files are.
+20. Download [nvdaControllerClient](https://download.nvaccess.org/releases/stable/) and extract nvdaControllerClient.dll into game folder where .exe files are.
 > [!Note]
-> skse64_loader.exe should now be in same folder with SkyrimSE.exe
-20. Download all the mods bellow from Nexus Mods using the "Install via Mod Manager" button.
+> If you've done all correctly both skse64_loader.exe and nvdaControllerClient.dll should now be in same folder with SkyrimSE.exe
+21. Download all the mods bellow from Nexus Mods using the "Install via Mod Manager" button.
 > [!Note]
 > - [Addres Library for SKSE plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444?tab=files);
 > - [Power Of Three's Papyrus Extender](https://www.nexusmods.com/skyrimspecialedition/mods/22854?tab=files);
@@ -31,21 +32,21 @@
 > - [Media Keys Fix](https://www.nexusmods.com/skyrimspecialedition/mods/92948?tab=files);
 > - [Better MessageBox Controls](https://www.nexusmods.com/skyrimspecialedition/mods/1428?tab=files);
 > - [Stay At The System Page - AE](https://www.nexusmods.com/skyrimspecialedition/mods/67883?tab=files).
-21. Download latest releases of [Skyrim Accessibility](https://github.com/DioKyrie-Git/SkyrimAccessibility/releases) and [SkyrimTTS](https://github.com/DioKyrie-Git/SkyrimTTS/releases) from GitHub.
-22. Go to folder where you extracted MO2.
-23. Move two downloaded archives inside of Mod Organizer's downloads folder. Exempli gratia: Z:/Moding/ModOrganizer2/downloads/
-24. Go back to Mod Organizer.
-25. Use the Tab key to find the Plugins tab control.
-26. Use the right/left arrows to navigate and open the Downloads tab.
-27. Use Tab until you reach the tree view with downloads.
-28. Use the up/down arrows to navigate through the Downloads tab.
-29. Press Enter to quick-install the selected mod.
-30. Install all mods in the Downloads tab.
-31. Use Tab until you reach the tree view with mods.
-32. Press Shift+F10 and select "Enable All Mods".
-33. Now use Tab to go back to the Downloads tab.
-33. Use the right/left arrows to navigate to the Plugins tab.
-34. Use Tab until you reach the tree view with plugins.
-35. Press Shift+F10 and select "Enable All".
-36. Use Tab until you reach the combo box to select a program to run, select "SKSE".
-37. Use the Run button to play the game.
+22. Download latest releases of [Skyrim Accessibility](https://github.com/DioKyrie-Git/SkyrimAccessibility/releases) and [SkyrimTTS](https://github.com/DioKyrie-Git/SkyrimTTS/releases) from GitHub.
+23. Go to folder where you extracted MO2.
+24. Move two downloaded archives inside of Mod Organizer's downloads folder. Exempli gratia: Z:/Moding/ModOrganizer2/downloads/
+25. Go back to Mod Organizer.
+26. Use the Tab key to find the Plugins tab control.
+27. Use the right/left arrows to navigate and open the Downloads tab.
+28. Use Tab until you reach the tree view with downloads.
+29. Use the up/down arrows to navigate through the Downloads tab.
+30. Press Enter to quick-install the selected mod.
+31. Install all mods in the Downloads tab.
+32. Use Tab until you reach the tree view with mods.
+33. Press Shift+F10 and select "Enable All Mods".
+34. Now use Tab to go back to the Downloads tab.
+35. Use the right/left arrows to navigate to the Plugins tab.
+36. Use Tab until you reach the tree view with plugins.
+37. Press Shift+F10 and select "Enable All".
+38. Use Tab until you reach the combo box to select a program to run, select "SKSE".
+39. Use the Run button to play the game.
