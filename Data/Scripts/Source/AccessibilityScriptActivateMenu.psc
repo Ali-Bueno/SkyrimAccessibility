@@ -76,198 +76,256 @@ Function ShowLockpickMenu()
 EndFunction
 
 Function ShowTakeItemSubMenu()
-    UIListMenu ShowTakeItemSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
-    ObjectReference[] IngestiblesArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 46, 700.0)
-    ObjectReference[] WeaponsArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 41, 700.0)
-    ObjectReference[] AmmoArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 42, 700.0)
-    ObjectReference[] ArmorsArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 26, 700.0)
-    ObjectReference[] BooksArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 27, 700.0)
-    ObjectReference[] KeysArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 45, 700.0)
-    ObjectReference[] SoulGemsArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 52, 700.0)
-    ObjectReference[] IngredientsArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 30, 700.0)
-    ObjectReference[] ScrollsArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 23, 700.0)
-    ObjectReference[] MiscArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 32, 700.0)
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    String[] SubMenus = new String[10]
+    SubMenus[0] = "Ingestibles"
+    SubMenus[1] = "Weapons"
+    SubMenus[2] = "Ammo"
+    SubMenus[3] = "Armors"
+    SubMenus[4] = "Books"
+    SubMenus[5] = "Keys"
+    SubMenus[6] = "Soul Gems"
+    SubMenus[7] = "Ingredients"
+    SubMenus[8] = "Scrolls"
+    SubMenus[9] = "Misc"
+    Int Index = 0
+    While Index < SubMenus.Length
+        ActivateMenu.AddEntryItem(SubMenus[Index])
+        Index += 1
+    EndWhile
+    ActivateMenu.OpenMenu()
+    Int Selection = ActivateMenu.GetResultInt()
+    If Selection == 0
+        ShowTakeItemIngestiblesSubMenu()
+    ElseIf Selection == 1
+        ShowTakeItemWeaponsSubMenu()
+    ElseIf Selection == 2
+        ShowTakeItemAmmoSubMenu()
+    ElseIf Selection == 3
+        ShowTakeItemArmorsSubMenu()
+    ElseIf Selection == 4
+        ShowTakeItemBooksSubMenu()
+    ElseIf Selection == 5
+        ShowTakeItemKeysSubMenu()
+    ElseIf Selection == 6
+        ShowTakeItemSoulGemsSubMenu()
+    ElseIf Selection == 7
+        ShowTakeItemIngredientsSubMenu()
+    ElseIf Selection == 8
+        ShowTakeItemScrollsSubMenu()
+    ElseIf Selection == 9
+        ShowTakeItemMiscSubMenu()
+    EndIf
+EndFunction
 
 
-    int TotalItems = 0
-
-    ; IngestiblesArray
-    If IngestiblesArray.Length > 0
-        Int IngestiblesIndex = 0
-        While IngestiblesIndex < IngestiblesArray.Length
-            String Name = (IngestiblesArray[IngestiblesIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(IngestiblesArray[IngestiblesIndex]) As Int))
-            If IngestiblesArray[IngestiblesIndex].IsOffLimits()
+Function ShowTakeItemIngestiblesSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 46, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            If Array[Index].IsOffLimits()
                 Name = "(Steal) " + Name
             EndIf
-            ShowTakeItemSubMenu.AddEntryItem(Name)
-            IngestiblesIndex += 1
+            ActivateMenu.AddEntryItem(Name)
+            Index += 1
         EndWhile
-        TotalItems += IngestiblesArray.Length
     EndIf
+    ActivateMenu.OpenMenu()
+    Int Selection = ActivateMenu.GetResultInt()
+    If Selection >= 0
+        Array[Selection].Activate(Game.GetPlayer())
+    EndIf
+EndFunction
 
-    ; WeaponsArray
-    If WeaponsArray.Length > 0
-        Int WeaponsIndex = 0
-        While WeaponsIndex < WeaponsArray.Length
-            String Name = (WeaponsArray[WeaponsIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(WeaponsArray[WeaponsIndex]) As Int))
-            If WeaponsArray[WeaponsIndex].IsOffLimits()
+Function ShowTakeItemWeaponsSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 41, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            If Array[Index].IsOffLimits()
                 Name = "(Steal) " + Name
             EndIf
-            ShowTakeItemSubMenu.AddEntryItem(Name)
-            WeaponsIndex += 1
+            ActivateMenu.AddEntryItem(Name)
+            Index += 1
         EndWhile
-        TotalItems += WeaponsArray.Length
     EndIf
+    ActivateMenu.OpenMenu()
+    Int Selection = ActivateMenu.GetResultInt()
+    If Selection >= 0
+        Array[Selection].Activate(Game.GetPlayer())
+    EndIf
+EndFunction
 
-    ; AmmoArray
-    If AmmoArray.Length > 0
-        Int AmmoIndex = 0
-        While AmmoIndex < AmmoArray.Length
-            String Name = (AmmoArray[AmmoIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(AmmoArray[AmmoIndex]) As Int))
-            If AmmoArray[AmmoIndex].IsOffLimits()
+Function ShowTakeItemAmmoSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 42, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            If Array[Index].IsOffLimits()
                 Name = "(Steal) " + Name
             EndIf
-            ShowTakeItemSubMenu.AddEntryItem(Name)
-            AmmoIndex += 1
+            ActivateMenu.AddEntryItem(Name)
+            Index += 1
         EndWhile
-        TotalItems += AmmoArray.Length
     EndIf
+    ActivateMenu.OpenMenu()
+    Int Selection = ActivateMenu.GetResultInt()
+    If Selection >= 0
+        Array[Selection].Activate(Game.GetPlayer())
+    EndIf
+EndFunction
 
-    ; ArmorsArray
-    If ArmorsArray.Length > 0
-        Int ArmorsIndex = 0
-        While ArmorsIndex < ArmorsArray.Length
-            String Name = (ArmorsArray[ArmorsIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(ArmorsArray[ArmorsIndex]) As Int))
-            If ArmorsArray[ArmorsIndex].IsOffLimits()
+Function ShowTakeItemArmorsSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 26, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            If Array[Index].IsOffLimits()
                 Name = "(Steal) " + Name
             EndIf
-            ShowTakeItemSubMenu.AddEntryItem(Name)
-            ArmorsIndex += 1
+            ActivateMenu.AddEntryItem(Name)
+            Index += 1
         EndWhile
-        TotalItems += ArmorsArray.Length
     EndIf
+    ActivateMenu.OpenMenu()
+    Int Selection = ActivateMenu.GetResultInt()
+    If Selection >= 0
+        Array[Selection].Activate(Game.GetPlayer())
+    EndIf
+EndFunction
 
-    ; BooksArray
-    If BooksArray.Length > 0
-        Int BooksIndex = 0
-        While BooksIndex < BooksArray.Length
-            String Name = (BooksArray[BooksIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(BooksArray[BooksIndex]) As Int))
-            If BooksArray[BooksIndex].IsOffLimits()
+Function ShowTakeItemBooksSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 27, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            If Array[Index].IsOffLimits()
                 Name = "(Steal) " + Name
             EndIf
-            ShowTakeItemSubMenu.AddEntryItem(Name)
-            BooksIndex += 1
+            ActivateMenu.AddEntryItem(Name)
+            Index += 1
         EndWhile
-        TotalItems += BooksArray.Length
     EndIf
+    ActivateMenu.OpenMenu()
+    Int Selection = ActivateMenu.GetResultInt()
+    If Selection >= 0
+        Array[Selection].Activate(Game.GetPlayer())
+    EndIf
+EndFunction
 
-    ; KeysArray
-    If KeysArray.Length > 0
-        Int KeysIndex = 0
-        While KeysIndex < KeysArray.Length
-            String Name = (KeysArray[KeysIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(KeysArray[KeysIndex]) As Int))
-            If KeysArray[KeysIndex].IsOffLimits()
+Function ShowTakeItemKeysSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 45, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            If Array[Index].IsOffLimits()
                 Name = "(Steal) " + Name
             EndIf
-            ShowTakeItemSubMenu.AddEntryItem(Name)
-            KeysIndex += 1
+            ActivateMenu.AddEntryItem(Name)
+            Index += 1
         EndWhile
-        TotalItems += KeysArray.Length
     EndIf
+    ActivateMenu.OpenMenu()
+    Int Selection = ActivateMenu.GetResultInt()
+    If Selection >= 0
+        Array[Selection].Activate(Game.GetPlayer())
+    EndIf
+EndFunction
 
-    ; SoulGemsArray
-    If SoulGemsArray.Length > 0
-    Int SoulGemsIndex = 0
-        While SoulGemsIndex < SoulGemsArray.Length
-            String Name = (SoulGemsArray[SoulGemsIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(SoulGemsArray[SoulGemsIndex]) As Int))
-            If SoulGemsArray[SoulGemsIndex].IsOffLimits()
+Function ShowTakeItemSoulGemsSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 52, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            If Array[Index].IsOffLimits()
                 Name = "(Steal) " + Name
             EndIf
-            ShowTakeItemSubMenu.AddEntryItem(Name)
-            SoulGemsIndex += 1
+            ActivateMenu.AddEntryItem(Name)
+            Index += 1
         EndWhile
-        TotalItems += SoulGemsArray.Length
     EndIf
+    ActivateMenu.OpenMenu()
+    Int Selection = ActivateMenu.GetResultInt()
+    If Selection >= 0
+        Array[Selection].Activate(Game.GetPlayer())
+    EndIf
+EndFunction
 
-    ; IngredientsArray
-    If IngredientsArray.Length > 0
-        Int IngredientsIndex = 0
-        While IngredientsIndex < IngredientsArray.Length
-            String Name = (IngredientsArray[IngredientsIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(IngredientsArray[IngredientsIndex]) As Int))
-            If IngredientsArray[IngredientsIndex].IsOffLimits()
+Function ShowTakeItemIngredientsSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 30, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            If Array[Index].IsOffLimits()
                 Name = "(Steal) " + Name
             EndIf
-            ShowTakeItemSubMenu.AddEntryItem(Name)
-            IngredientsIndex += 1
+            ActivateMenu.AddEntryItem(Name)
+            Index += 1
         EndWhile
-        TotalItems += IngredientsArray.Length
     EndIf
+    ActivateMenu.OpenMenu()
+    Int Selection = ActivateMenu.GetResultInt()
+    If Selection >= 0
+        Array[Selection].Activate(Game.GetPlayer())
+    EndIf
+EndFunction
 
-    ; ScrollsArray
-    If ScrollsArray.Length > 0
-        Int ScrollsIndex = 0
-        While ScrollsIndex < ScrollsArray.Length
-            String Name = (ScrollsArray[ScrollsIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(ScrollsArray[ScrollsIndex]) As Int))
-            If ScrollsArray[ScrollsIndex].IsOffLimits()
+Function ShowTakeItemScrollsSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 23, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            If Array[Index].IsOffLimits()
                 Name = "(Steal) " + Name
             EndIf
-            ShowTakeItemSubMenu.AddEntryItem(Name)
-            ScrollsIndex += 1
+            ActivateMenu.AddEntryItem(Name)
+            Index += 1
         EndWhile
-        TotalItems += ScrollsArray.Length
     EndIf
+    ActivateMenu.OpenMenu()
+    Int Selection = ActivateMenu.GetResultInt()
+    If Selection >= 0
+        Array[Selection].Activate(Game.GetPlayer())
+    EndIf
+EndFunction
 
-    ; MiscArray
-    If MiscArray.Length > 0
-        Int MiscIndex = 0
-        While MiscIndex < MiscArray.Length
-            String Name = (MiscArray[MiscIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(MiscArray[MiscIndex]) As Int))
-            If MiscArray[MiscIndex].IsOffLimits()
+Function ShowTakeItemMiscSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 32, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            If Array[Index].IsOffLimits()
                 Name = "(Steal) " + Name
             EndIf
-            ShowTakeItemSubMenu.AddEntryItem(Name)
-            MiscIndex += 1
+            ActivateMenu.AddEntryItem(Name)
+            Index += 1
         EndWhile
-        TotalItems += MiscArray.Length
     EndIf
-
-    If TotalItems > 0
-        ShowTakeItemSubMenu.OpenMenu()
-        Int Selection = ShowTakeItemSubMenu.GetResultInt()
-
-        ; Define cumulative offsets for each array
-        Int offset1 = IngestiblesArray.Length
-        Int offset2 = offset1 + WeaponsArray.Length
-        Int offset3 = offset2 + AmmoArray.Length
-        Int offset4 = offset3 + ArmorsArray.Length
-        Int offset5 = offset4 + BooksArray.Length
-        Int offset6 = offset5 + KeysArray.Length
-        Int offset7 = offset6 + SoulGemsArray.Length
-        Int offset8 = offset7 + IngredientsArray.Length
-        Int offset9 = offset8 + ScrollsArray.Length
-        Int offset10 = offset9 + MiscArray.Length
-
-        If Selection >= 0 && Selection < offset1
-            IngestiblesArray[Selection].Activate(Game.GetPlayer())
-        ElseIf Selection < offset2
-            WeaponsArray[Selection - offset1].Activate(Game.GetPlayer())
-        ElseIf Selection < offset3
-            AmmoArray[Selection - offset2].Activate(Game.GetPlayer())
-        ElseIf Selection < offset4
-            ArmorsArray[Selection - offset3].Activate(Game.GetPlayer())
-        ElseIf Selection < offset5
-            BooksArray[Selection - offset4].Activate(Game.GetPlayer())
-        ElseIf Selection < offset6
-            KeysArray[Selection - offset5].Activate(Game.GetPlayer())
-        ElseIf Selection < offset7
-            SoulGemsArray[Selection - offset6].Activate(Game.GetPlayer())
-        ElseIf Selection < offset8
-            IngredientsArray[Selection - offset7].Activate(Game.GetPlayer())
-        ElseIf Selection < offset9
-            ScrollsArray[Selection - offset8].Activate(Game.GetPlayer())
-        ElseIf Selection < offset10
-            MiscArray[Selection - offset9].Activate(Game.GetPlayer())
-        EndIf
+    ActivateMenu.OpenMenu()
+    Int Selection = ActivateMenu.GetResultInt()
+    If Selection >= 0
+        Array[Selection].Activate(Game.GetPlayer())
     EndIf
 EndFunction
 
