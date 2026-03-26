@@ -21,7 +21,7 @@ MiscObject Property SkeletonKey Auto
 
 Event OnInit()
     Debug.Notification("Accessibility Activate Menu Loaded")
-    RegisterForKey(47)
+    RegisterForKey(47) ;V key
 EndEvent
 
 Event OnKeyDown(Int KeyCode)
@@ -283,7 +283,7 @@ Function ShowLootContainersSubMenu()
                 Name = "(Empty) " + Name
             EndIf
             If ContainerArray[ContainerIndex].IsLocked() == 1
-                If !ContainerArray[ContainerIndex].GetLockLevel() == 255
+                If ContainerArray[ContainerIndex].GetLockLevel() < 255
                     Name = "(Locked) " + Name
                 ElseIf ContainerArray[ContainerIndex].GetLockLevel() == 255
                     Name = "(Key Required) " + Name
@@ -296,7 +296,7 @@ Function ShowLootContainersSubMenu()
         Int Selection = ShowLootContainersSubMenu.GetResultInt()
         If (Selection >= 0 && ContainerArray[Selection].IsLocked() == 0)
             ContainerArray[Selection].Activate(Game.GetPlayer())
-        ElseIf (Selection >= 0 && ContainerArray[Selection].IsLocked() == 1 && !ContainerArray[Selection].GetLockLevel() == 255)
+        ElseIf (Selection >= 0 && ContainerArray[Selection].IsLocked() == 1 && ContainerArray[Selection].GetLockLevel() < 255)
             ShowLockpickMenu()
             Int SelectionLockpickMode = ShowLockpickMenu.GetResultInt()
             If SelectionLockpickMode == 0
@@ -337,7 +337,7 @@ Function ShowOpenCloseDoorSubMenu()
         While OpenCloseDoorIndex < OpenCloseDoorArray.Length
             String Name = (OpenCloseDoorArray[OpenCloseDoorIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(OpenCloseDoorArray[OpenCloseDoorIndex]) As Int))
             If OpenCloseDoorArray[OpenCloseDoorIndex].IsLocked() == 1
-                If !OpenCloseDoorArray[OpenCloseDoorIndex].GetLockLevel() == 255
+                If OpenCloseDoorArray[OpenCloseDoorIndex].GetLockLevel() < 255
                     Name = "(Locked) " + Name
                 ElseIf OpenCloseDoorArray[OpenCloseDoorIndex].GetLockLevel() == 255
                     Name = "(Key Required) " + Name
@@ -350,7 +350,7 @@ Function ShowOpenCloseDoorSubMenu()
         Int Selection = ShowOpenCloseDoorSubMenu.GetResultInt()
         If (Selection >= 0 && OpenCloseDoorArray[Selection].IsLocked() == 0)
             OpenCloseDoorArray[Selection].Activate(Game.GetPlayer())
-        ElseIf (Selection >= 0 && OpenCloseDoorArray[Selection].IsLocked() == 1 && !OpenCloseDoorArray[Selection].GetLockLevel() == 255)
+        ElseIf (Selection >= 0 && OpenCloseDoorArray[Selection].IsLocked() == 1 && OpenCloseDoorArray[Selection].GetLockLevel() < 255)
             ShowLockpickMenu()
             Int SelectionLockpickMode = ShowLockpickMenu.GetResultInt()
             If SelectionLockpickMode == 0
