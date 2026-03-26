@@ -33,7 +33,7 @@ EndEvent
 
 Function ShowActivateMenu()
     UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
-    String[] SubMenus = new String[7]
+    String[] SubMenus = new String[6]
     SubMenus[0] = "Take Item"
     SubMenus[1] = "Loot Containers"
     SubMenus[2] = "Loot NPC"
@@ -511,22 +511,120 @@ Function ShowTalkToNPCSubMenu()
 EndFunction
 
 Function ShowActivatorsSubMenu()
-    UIListMenu ShowActivatorsSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
-    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 29, 700.0)
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    String[] SubMenus = new String[5]
+    SubMenus[0] = "Furniture"
+    SubMenus[1] = "Flora"
+    SubMenus[2] = "Trees"
+    SubMenus[3] = "Misc"
+    SubMenus[4] = "Talking"
+    Int Index = 0
+    While Index < SubMenus.Length
+        ActivateMenu.AddEntryItem(SubMenus[Index])
+        Index += 1
+    EndWhile
+    ActivateMenu.OpenMenu()
+    Int Selection = ActivateMenu.GetResultInt()
+    If Selection == 0
+        ShowActivatorsFurnitureSubMenu()
+    ElseIf Selection == 1
+        ShowActivatorsFloraSubMenu()
+    ElseIf Selection == 2
+        ShowActivatorsTreesSubMenu()
+    ElseIf Selection == 3
+        ShowActivatorsMiscSubMenu()
+    ElseIf Selection == 4
+        ShowActivatorsTalkingSubMenu()
+    EndIf
+EndFunction
+
+Function ShowActivatorsTreesSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 38, 700.0)
     If Array.Length > 0
         Int Index = 0
         While Index < Array.Length
             String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
-            ShowActivatorsSubMenu.AddEntryItem(Name)
+            ActivateMenu.AddEntryItem(Name)
             Index += 1
         EndWhile
-        ShowActivatorsSubMenu.OpenMenu()
-        Int Selection = ShowActivatorsSubMenu.GetResultInt()
+        ActivateMenu.OpenMenu()
+        Int Selection = ActivateMenu.GetResultInt()
         If Selection >= 0
             Array[Selection].Activate(Game.GetPlayer())
         EndIf
     EndIf
 EndFunction
 
+Function ShowActivatorsFloraSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 39, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            ActivateMenu.AddEntryItem(Name)
+            Index += 1
+        EndWhile
+        ActivateMenu.OpenMenu()
+        Int Selection = ActivateMenu.GetResultInt()
+        If Selection >= 0
+            Array[Selection].Activate(Game.GetPlayer())
+        EndIf
+    EndIf
+EndFunction
 
+Function ShowActivatorsFurnitureSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 40, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            ActivateMenu.AddEntryItem(Name)
+            Index += 1
+        EndWhile
+        ActivateMenu.OpenMenu()
+        Int Selection = ActivateMenu.GetResultInt()
+        If Selection >= 0
+            Array[Selection].Activate(Game.GetPlayer())
+        EndIf
+    EndIf
+EndFunction
+
+Function ShowActivatorsMiscSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 24, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            ActivateMenu.AddEntryItem(Name)
+            Index += 1
+        EndWhile
+        ActivateMenu.OpenMenu()
+        Int Selection = ActivateMenu.GetResultInt()
+        If Selection >= 0
+            Array[Selection].Activate(Game.GetPlayer())
+        EndIf
+    EndIf
+EndFunction
+
+Function ShowActivatorsTalkingSubMenu()
+    UIListMenu ActivateMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 25, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            ActivateMenu.AddEntryItem(Name)
+            Index += 1
+        EndWhile
+        ActivateMenu.OpenMenu()
+        Int Selection = ActivateMenu.GetResultInt()
+        If Selection >= 0
+            Array[Selection].Activate(Game.GetPlayer())
+        EndIf
+    EndIf
+EndFunction
 
