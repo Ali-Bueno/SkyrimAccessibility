@@ -40,10 +40,10 @@ Function ShowActivateMenu()
     SubMenus[3] = "Talk to/Pickpocket NPC"
     SubMenus[4] = "Open/Close Door"
     SubMenus[5] = "Activators"
-    Int SubMenusIndex = 0
-    While SubMenusIndex < SubMenus.Length
-        ActivateMenu.AddEntryItem(SubMenus[SubMenusIndex])
-        SubMenusIndex += 1	
+    Int Index = 0
+    While Index < SubMenus.Length
+        ActivateMenu.AddEntryItem(SubMenus[Index])
+        Index += 1
     EndWhile
     ActivateMenu.OpenMenu()
     Int Selection = ActivateMenu.GetResultInt()
@@ -67,10 +67,10 @@ Function ShowLockpickMenu()
     String[] LockpickMode = new String[2]
     LockpickMode[0] = "Manual Lockpick"
     LockpickMode[1] = "Attempt Autolockpick"
-    Int LockpickModeIndex = 0
-    While LockpickModeIndex < LockpickMode.Length
-        ShowLockpickMenu.AddEntryItem(LockpickMode[LockpickModeIndex])
-        LockpickModeIndex += 1
+    Int Index = 0
+    While Index < LockpickMode.Length
+        ShowLockpickMenu.AddEntryItem(LockpickMode[Index])
+        Index += 1
     EndWhile
     ShowLockpickMenu.OpenMenu()
 EndFunction
@@ -274,41 +274,41 @@ EndFunction
 Function ShowLootContainersSubMenu()
     UIListMenu ShowLootContainersSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
     UIListMenu ShowLockpickMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
-    ObjectReference[] ContainerArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 28, 700.0)
-    If ContainerArray.Length > 0
-        Int ContainerIndex = 0
-        While ContainerIndex < ContainerArray.Length
-            String Name = (ContainerArray[ContainerIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(ContainerArray[ContainerIndex]) As Int)) 
-            If ContainerArray[ContainerIndex].GetNumItems() == 0
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 28, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            If Array[Index].GetNumItems() == 0
                 Name = "(Empty) " + Name
             EndIf
-            If ContainerArray[ContainerIndex].IsLocked() == 1
-                If ContainerArray[ContainerIndex].GetLockLevel() < 255
+            If Array[Index].IsLocked() == 1
+                If Array[Index].GetLockLevel() < 255
                     Name = "(Locked) " + Name
-                ElseIf ContainerArray[ContainerIndex].GetLockLevel() == 255
+                ElseIf Array[Index].GetLockLevel() == 255
                     Name = "(Key Required) " + Name
                 EndIf
             EndIf
             ShowLootContainersSubMenu.AddEntryItem(Name)
-            ContainerIndex += 1
+            Index += 1
         EndWhile
         ShowLootContainersSubMenu.OpenMenu()
         Int Selection = ShowLootContainersSubMenu.GetResultInt()
-        If (Selection >= 0 && ContainerArray[Selection].IsLocked() == 0)
-            ContainerArray[Selection].Activate(Game.GetPlayer())
-        ElseIf (Selection >= 0 && ContainerArray[Selection].IsLocked() == 1 && ContainerArray[Selection].GetLockLevel() < 255)
+        If (Selection >= 0 && Array[Selection].IsLocked() == 0)
+            Array[Selection].Activate(Game.GetPlayer())
+        ElseIf (Selection >= 0 && Array[Selection].IsLocked() == 1 && Array[Selection].GetLockLevel() < 255)
             ShowLockpickMenu()
             Int SelectionLockpickMode = ShowLockpickMenu.GetResultInt()
             If SelectionLockpickMode == 0
-                ContainerArray[Selection].Activate(Game.GetPlayer())
+                Array[Selection].Activate(Game.GetPlayer())
             ElseIf SelectionLockpickMode == 1
                 If (Game.GetPlayer().GetItemCount(SkeletonKey) >= 1)
-                    (ContainerArray[Selection].Lock(false))
+                    (Array[Selection].Lock(false))
                     (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                 Else
                     If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
                         If (Utility.RandomInt(0, 3) == 0)
-                            (ContainerArray[Selection].Lock(false))
+                            (Array[Selection].Lock(false))
                             (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                             (Game.GetPlayer().RemoveItem(Lockpick, 1))
                             (Game.AdvanceSkill("Lockpicking", 2.0))
@@ -322,8 +322,8 @@ Function ShowLootContainersSubMenu()
                     EndIf
                 EndIf
             EndIf
-        ElseIf (Selection >= 0 && ContainerArray[Selection].IsLocked() == 1 && ContainerArray[Selection].GetLockLevel() == 255)
-            ContainerArray[Selection].Activate(Game.GetPlayer())
+        ElseIf (Selection >= 0 && Array[Selection].IsLocked() == 1 && Array[Selection].GetLockLevel() == 255)
+            Array[Selection].Activate(Game.GetPlayer())
         EndIf
     EndIf
 EndFunction
@@ -331,38 +331,38 @@ EndFunction
 Function ShowOpenCloseDoorSubMenu()
     UIListMenu ShowOpenCloseDoorSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
     UIListMenu ShowLockpickMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
-    ObjectReference[] OpenCloseDoorArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 29, 700.0)
-    If OpenCloseDoorArray.Length > 0
-        Int OpenCloseDoorIndex = 0
-        While OpenCloseDoorIndex < OpenCloseDoorArray.Length
-            String Name = (OpenCloseDoorArray[OpenCloseDoorIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(OpenCloseDoorArray[OpenCloseDoorIndex]) As Int))
-            If OpenCloseDoorArray[OpenCloseDoorIndex].IsLocked() == 1
-                If OpenCloseDoorArray[OpenCloseDoorIndex].GetLockLevel() < 255
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 29, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
+            If Array[Index].IsLocked() == 1
+                If Array[Index].GetLockLevel() < 255
                     Name = "(Locked) " + Name
-                ElseIf OpenCloseDoorArray[OpenCloseDoorIndex].GetLockLevel() == 255
+                ElseIf Array[Index].GetLockLevel() == 255
                     Name = "(Key Required) " + Name
                 EndIf
             EndIf
             ShowOpenCloseDoorSubMenu.AddEntryItem(Name)
-            OpenCloseDoorIndex += 1
+            Index += 1
         EndWhile
         ShowOpenCloseDoorSubMenu.OpenMenu()
         Int Selection = ShowOpenCloseDoorSubMenu.GetResultInt()
-        If (Selection >= 0 && OpenCloseDoorArray[Selection].IsLocked() == 0)
-            OpenCloseDoorArray[Selection].Activate(Game.GetPlayer())
-        ElseIf (Selection >= 0 && OpenCloseDoorArray[Selection].IsLocked() == 1 && OpenCloseDoorArray[Selection].GetLockLevel() < 255)
+        If (Selection >= 0 && Array[Selection].IsLocked() == 0)
+            Array[Selection].Activate(Game.GetPlayer())
+        ElseIf (Selection >= 0 && Array[Selection].IsLocked() == 1 && Array[Selection].GetLockLevel() < 255)
             ShowLockpickMenu()
             Int SelectionLockpickMode = ShowLockpickMenu.GetResultInt()
             If SelectionLockpickMode == 0
-                OpenCloseDoorArray[Selection].Activate(Game.GetPlayer())
+                Array[Selection].Activate(Game.GetPlayer())
             ElseIf SelectionLockpickMode == 1
                 If (Game.GetPlayer().GetItemCount(SkeletonKey) >= 1)
-                    (OpenCloseDoorArray[Selection].Lock(false))
+                    (Array[Selection].Lock(false))
                     (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                 Else
                     If (Game.GetPlayer().GetItemCount(Lockpick) >= 1)
                         If (Utility.RandomInt(0, 3) == 0)
-                            (OpenCloseDoorArray[Selection].Lock(false))
+                            (Array[Selection].Lock(false))
                             (AccessibilityCNDLockPickSuccess.Play(Game.GetPlayer()))
                             (Game.GetPlayer().RemoveItem(Lockpick, 1))
                             (Game.AdvanceSkill("Lockpicking", 2.0))
@@ -376,8 +376,8 @@ Function ShowOpenCloseDoorSubMenu()
                     EndIf
                 EndIf
             EndIf
-        ElseIf (Selection >= 0 && OpenCloseDoorArray[Selection].IsLocked() == 1 && OpenCloseDoorArray[Selection].GetLockLevel() == 255)
-            OpenCloseDoorArray[Selection].Activate(Game.GetPlayer())
+        ElseIf (Selection >= 0 && Array[Selection].IsLocked() == 1 && Array[Selection].GetLockLevel() == 255)
+            Array[Selection].Activate(Game.GetPlayer())
         EndIf
     EndIf
 EndFunction
@@ -454,18 +454,18 @@ EndFunction
 
 Function ShowActivatorsSubMenu()
     UIListMenu ShowActivatorsSubMenu = UIExtensions.GetMenu("UIListMenu") as UIListMenu
-    ObjectReference[] ActivatorsArray = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 29, 700.0)
-    If ActivatorsArray.Length > 0
-        Int ActivatorsIndex = 0
-        While ActivatorsIndex < ActivatorsArray.Length
-            String Name = (ActivatorsArray[ActivatorsIndex].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(ActivatorsArray[ActivatorsIndex]) As Int))
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Game.GetPlayer(), 29, 700.0)
+    If Array.Length > 0
+        Int Index = 0
+        While Index < Array.Length
+            String Name = (Array[Index].GetDisplayName() + " " + (Game.GetPlayer().GetDistance(Array[Index]) As Int))
             ShowActivatorsSubMenu.AddEntryItem(Name)
-            ActivatorsIndex += 1
+            Index += 1
         EndWhile
         ShowActivatorsSubMenu.OpenMenu()
         Int Selection = ShowActivatorsSubMenu.GetResultInt()
         If Selection >= 0
-            ActivatorsArray[Selection].Activate(Game.GetPlayer())
+            Array[Selection].Activate(Game.GetPlayer())
         EndIf
     EndIf
 EndFunction
