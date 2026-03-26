@@ -18,4 +18,3 @@ Magnum Ultimus: Move Papyrus scripts to C++ SKSE plugin, with PrismaUI for Menus
 0.8.2
 1. Are there more activators?
 2. Test WalkInPlace.
-3. Clear leftover from old menu and script QuestsMQ101
