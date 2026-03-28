@@ -69,10 +69,7 @@ Event OnUpdate()
     ScanAll(Player)
 
     If IsMounted
-        Int MoveDir = GetMovementDirection()
-        If MoveDir != -1
-            PlayCached(MoveDir)
-        EndIf
+        PlayCached(GetSafeMovementDirection())
         RegisterForSingleUpdate(MountScanInterval)
     Else
         RegisterForSingleUpdate(ScanInterval)
@@ -80,8 +77,7 @@ Event OnUpdate()
 EndEvent
 
 Event OnAnimationEvent(ObjectReference akSource, String asEventName)
-    Int MoveDir = GetMovementDirection()
-    PlayCached(MoveDir)
+    PlayCached(GetSafeMovementDirection())
     RegisterPlayerFootsteps()
 EndEvent
 
@@ -195,6 +191,14 @@ EndFunction
 Float Function GetVolumeByDistance(Float Distance)
     Float Ratio = Distance / ScanRadius
     Return MaxVolume - (Ratio * (MaxVolume - MinVolume))
+EndFunction
+
+Int Function GetSafeMovementDirection()
+    Int Dir = GetMovementDirection()
+    If Dir == -1
+        Dir = 0
+    EndIf
+    Return Dir
 EndFunction
 
 Int Function GetMovementDirection()

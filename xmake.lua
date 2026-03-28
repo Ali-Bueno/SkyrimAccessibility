@@ -2,7 +2,7 @@
 includes("lib/commonlibsse")
 
 -- set project constants
-set_project("commonlibsse-template")
+set_project("SkyrimAccessibility")
 set_version("0.0.0")
 set_license("GPL-3.0")
 set_languages("c++23")
@@ -13,11 +13,11 @@ add_rules("mode.debug", "mode.releasedbg")
 add_rules("plugin.vsxmake.autoupdate")
 
 -- define targets
-target("commonlibsse-template")
+target("SkyrimAccessibility")
     add_rules("commonlibsse.plugin", {
-        name = "commonlibsse-template",
-        author = "libxse",
-        description = "SKSE64 plugin template using CommonLibSSE"
+        name = "SkyrimAccessibility",
+        author = "Dio Kyrie",
+        description = "Skyrim Accessibility SKSE plugin"
     })
 
     -- add src files

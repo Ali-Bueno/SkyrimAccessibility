@@ -57,10 +57,7 @@ Event OnUpdate()
     ScanAll(Player)
 
     If IsMounted
-        Int MoveDir = GetMovementDirection()
-        If MoveDir != -1
-            PlayCached(MoveDir)
-        EndIf
+        PlayCached(GetSafeMovementDirection())
         RegisterForSingleUpdate(MountScanInterval)
     Else
         RegisterForSingleUpdate(ScanInterval)
@@ -68,8 +65,7 @@ Event OnUpdate()
 EndEvent
 
 Event OnAnimationEvent(ObjectReference akSource, String asEventName)
-    Int MoveDir = GetMovementDirection()
-    PlayCached(MoveDir)
+    PlayCached(GetSafeMovementDirection())
     RegisterPlayerFootsteps()
 EndEvent
 
@@ -84,7 +80,40 @@ Function ScanAll(Actor Player)
     CachedDistRight = ScanRadius
 
     ScanType(Player, 28, AccessibilityAMBFurnitureContainer)
-    ScanType(Player, 29, AccessibilityAMBFurnitureDoor)
+    ScanTypePriority(Player, 29, AccessibilityAMBFurnitureDoor)
+EndFunction
+
+; Same as ScanType but always overwrites (doors have priority)
+Function ScanTypePriority(Actor Player, Int TypeID, Sound TypeSound)
+    ObjectReference[] Array = PO3_SKSEFunctions.FindAllReferencesOfFormType(Player, TypeID, ScanRadius)
+    Int Index = 0
+    While Index < Array.Length
+        If Array[Index] != None
+            Float Dist = Player.GetDistance(Array[Index])
+            Float Angle = Player.GetHeadingAngle(Array[Index])
+            If Angle >= -90.0 && Angle <= 90.0
+                CachedDistForward = Dist
+                CachedRefForward = Array[Index]
+                CachedSoundForward = TypeSound
+            EndIf
+            If Angle < -90.0 || Angle > 90.0
+                CachedDistBack = Dist
+                CachedRefBack = Array[Index]
+                CachedSoundBack = TypeSound
+            EndIf
+            If Angle < 0.0
+                CachedDistLeft = Dist
+                CachedRefLeft = Array[Index]
+                CachedSoundLeft = TypeSound
+            EndIf
+            If Angle > 0.0
+                CachedDistRight = Dist
+                CachedRefRight = Array[Index]
+                CachedSoundRight = TypeSound
+            EndIf
+        EndIf
+        Index += 1
+    EndWhile
 EndFunction
 
 Function ScanType(Actor Player, Int TypeID, Sound TypeSound)
@@ -169,6 +198,14 @@ EndFunction
 Float Function GetVolumeByDistance(Float Distance)
     Float Ratio = Distance / ScanRadius
     Return MaxVolume - (Ratio * (MaxVolume - MinVolume))
+EndFunction
+
+Int Function GetSafeMovementDirection()
+    Int Dir = GetMovementDirection()
+    If Dir == -1
+        Dir = 0
+    EndIf
+    Return Dir
 EndFunction
 
 Int Function GetMovementDirection()
